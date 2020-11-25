@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 
 class Mobile extends StatelessWidget {
@@ -6,6 +5,7 @@ class Mobile extends StatelessWidget {
   Widget build(BuildContext context) {
     return FittedBox(
       fit: BoxFit.contain,
-        child: Text("Hello1"));
+      child: Text("Hello1"),
+    );
   }
 }
