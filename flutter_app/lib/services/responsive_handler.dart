@@ -8,17 +8,22 @@ class Services extends StatefulWidget {
 class _ServicesState extends State<Services> {
   @override
   Widget build(BuildContext context) {
+    // double _width= MediaQuery.of(context).size.width;
+    // double _height = MediaQuery.of(context).size.height;
+
     return MaterialApp(
       theme: ThemeData.dark(),
       home: SafeArea(
         child: Scaffold(
-          appBar: AppBar(
-            leading: Text("hello world",style: TextStyle(fontSize: 20.0),),
+          appBar: AppBar(),
+          body: Center(
+            child: Text(
+              "Hello world",
+              style: TextStyle(fontSize: 20.0),
+            ),
           ),
-        )
-        ,
+        ),
       ),
-
     );
   }
 }
