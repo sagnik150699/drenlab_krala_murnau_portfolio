@@ -8,8 +8,8 @@ class Services extends StatefulWidget {
 class _ServicesState extends State<Services> {
   @override
   Widget build(BuildContext context) {
-    // double _width= MediaQuery.of(context).size.width;
-    // double _height = MediaQuery.of(context).size.height;
+     // var width= MediaQuery.of(context).size.width;
+     // var height = MediaQuery.of(context).size.height;
 
     return MaterialApp(
       theme: ThemeData.dark(),
