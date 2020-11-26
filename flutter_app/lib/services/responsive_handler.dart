@@ -22,7 +22,7 @@ class _ServicesState extends State<Services> {
 
 
     return MaterialApp(
-     // theme: ThemeData.dark(),
+      theme: ThemeData.dark(),
       home: SafeArea(
         child: Scaffold(
           body: LayoutBuilder(
@@ -34,7 +34,12 @@ class _ServicesState extends State<Services> {
               }
             },
           ),
-          //appBar: AppBar(),
+          appBar: AppBar(
+            leading: Icon(
+              Icons.menu,
+
+            ),
+          ),
           // body: Center(
           //   child: (MediaQuery.of(context).size.width  > 500) ? Text("Hello1") : Text("Hello 2")
           // ),
