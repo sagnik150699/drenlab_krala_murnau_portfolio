@@ -5,6 +5,18 @@ class Mobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            DrawerHeader(
+              child: Text("Hello"),
+            ),
+            ListTile(),
+            ListTile(),
+            ListTile(),
+          ],
+        ),
+      ),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         title: Text(
@@ -20,7 +32,9 @@ class Mobile extends StatelessWidget {
             Icons.menu,
             size: 40,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Scaffold.of(context).openDrawer();
+          },
         ),
       ),
       body: Stack(
@@ -42,9 +56,9 @@ class Mobile extends StatelessWidget {
         ]),
           Column(
             children: <Widget>[
-              Expanded(child: Center(child: Text("data"))),
-              Expanded(child: Center(child: Text("data"))),
-              Expanded(child: Center(child: Text("data"))),
+              Expanded(child: Center(child: Text("data", style: TextStyle(fontSize: 30),))),
+              Expanded(child: Center(child: Text("data", style: TextStyle(fontSize: 30)))),
+              Expanded(child: Center(child: Text("data", style: TextStyle(fontSize: 30)))),
             ],
           ),]),
     );
