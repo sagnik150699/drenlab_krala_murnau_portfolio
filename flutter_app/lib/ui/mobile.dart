@@ -41,6 +41,24 @@ class _Mobile extends State<Mobile> {
             ),
           ),
           Padding(
+            padding: const EdgeInsets.only(top: 2),
+            child: ListTile(
+              title: Text(
+                "",
+                style: GoogleFonts.oswald(fontSize: 40),
+              ),
+              leading: IconButton(
+                icon: Icon(
+                  Icons.menu,
+                  size: 40,
+                ),
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+              ),
+            ),
+          ),
+          Padding(
             padding: const EdgeInsets.only(top: 450, left: 30),
             child: Card(
               elevation: 10,
@@ -63,45 +81,24 @@ class _Mobile extends State<Mobile> {
             ),
           ),
           Padding(
+            padding: const EdgeInsets.only(top: 550,left: 70),
+            child: Icon(Icons.search,
+            size: 35,),
+          ),
+          Padding(
             padding: const EdgeInsets.only(left: 135,top: 580),
             child: Container(
 
-                child: Text("Current Location:$city",
+                child: Text("Current Location: $city",
                     style: GoogleFonts.oswald(fontSize: 15,textStyle: TextStyle(color: Colors.black45)))),
           ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              ListTile(
-                title: Text(
-                  "",
-                  style: GoogleFonts.oswald(fontSize: 40),
-                ),
-                leading: IconButton(
-                  icon: Icon(
-                    Icons.menu,
-                    size: 40,
-                  ),
-                  onPressed: () {
-                    Scaffold.of(context).openDrawer();
-                  },
-                ),
-              ),
-              Expanded(
-                  child: Center(
-                      child: Text(
-                "",
-                style: TextStyle(fontSize: 30),
-              ))),
-              Expanded(
-                  child:
-                      Center(child: Text("", style: TextStyle(fontSize: 30)))),
-              Expanded(
-                  child:
-                      Center(child: Text("", style: TextStyle(fontSize: 30)))),
-            ],
+          Padding(
+            padding: const EdgeInsets.only(left: 20,top: 625),
+            child: ListTile(
+              title: Text("Providing private detective services and private investigation services to businesses ",style: GoogleFonts.inconsolata(color: Colors.black38),)
+            ),
           ),
+
         ]),
       ),
     );
