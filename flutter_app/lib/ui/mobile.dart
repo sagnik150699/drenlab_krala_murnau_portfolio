@@ -9,7 +9,10 @@ class Mobile extends StatelessWidget {
         child: ListView(
           children: [
             DrawerHeader(
-              child: Text("Hello"),
+              child: Text("Hello", style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+              ),),
             ),
             ListTile(
               leading: Text("hello2"),
@@ -34,7 +37,7 @@ class Mobile extends StatelessWidget {
             Icons.menu,
             size: 40,
           ),
-          onPressed: () {
+          onPressed: (){
             Scaffold.of(context).openDrawer();
           },
         ),
