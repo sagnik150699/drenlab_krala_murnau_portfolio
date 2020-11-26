@@ -17,37 +17,14 @@ class _ServicesState extends State<Services> {
 
     return MaterialApp(
       theme: ThemeData.dark(),
-      home: SafeArea(
-        child: Scaffold(
-          body: LayoutBuilder(
-            builder: (context, constraints) {
-              if (constraints.maxWidth > 600) {
-                return Desktop();
-              } else {
-                return Mobile();
-              }
-            },
-          ),
-          appBar: AppBar(
-            title: Text(
-              "Klara Murnau",
-              style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Pacifico'),
-            ),
-            bottomOpacity: 100,
-            leading: IconButton(
-              icon: Icon(
-                Icons.menu,
-              ),
-              onPressed: () {},
-            ),
-          ),
-          // body: Center(
-          //   child: (MediaQuery.of(context).size.width  > 500) ? Text("Hello1") : Text("Hello 2")
-          // ),
-        ),
+      home: LayoutBuilder(
+        builder: (context, constraints) {
+          if (constraints.maxWidth > 600) {
+            return Desktop();
+          } else {
+            return Mobile();
+          }
+        },
       ),
     );
   }
