@@ -35,9 +35,11 @@ class _ServicesState extends State<Services> {
             },
           ),
           appBar: AppBar(
-            leading: Icon(
-              Icons.menu,
-
+            leading: IconButton(
+              icon: Icon(
+                Icons.menu,
+              ),
+              onPressed: (){},
             ),
           ),
           // body: Center(
