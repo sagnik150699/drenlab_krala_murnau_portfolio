@@ -3,9 +3,19 @@ import 'package:flutter/cupertino.dart';
 class Desktop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return FittedBox(
-      fit: BoxFit.contain,
-      child: Text("Hello2"),
+    return Row(
+      children:<Widget> [
+        Expanded(
+          child: Image(
+            image: AssetImage('images/7.jpg'),
+          ),
+        ),
+      Expanded(
+        child: Image(
+          image: AssetImage('images/6.jpg'),
+        ),
+      ),
+      ],
     );
   }
 }

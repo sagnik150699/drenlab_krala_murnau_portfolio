@@ -22,21 +22,19 @@ class _ServicesState extends State<Services> {
 
 
     return MaterialApp(
-      theme: ThemeData.dark(),
+     // theme: ThemeData.dark(),
       home: SafeArea(
         child: Scaffold(
-          body: Center(
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                if (constraints.maxWidth > 600) {
-                  return Mobile();  //Text("Hello1");
-                } else {
-                  return Desktop();
-                }
-              },
-            ),
+          body: LayoutBuilder(
+            builder: (context, constraints) {
+              if (constraints.maxWidth > 600) {
+                return Desktop();
+              } else {
+                return  Mobile();
+              }
+            },
           ),
-          appBar: AppBar(),
+          //appBar: AppBar(),
           // body: Center(
           //   child: (MediaQuery.of(context).size.width  > 500) ? Text("Hello1") : Text("Hello 2")
           // ),
