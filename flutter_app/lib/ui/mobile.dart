@@ -23,20 +23,30 @@ class Mobile extends StatelessWidget {
           onPressed: () {},
         ),
       ),
-      body: ListView(scrollDirection: Axis.horizontal, children: [
-        Image(
-          image: AssetImage('images/cropped5.png'),
-        ),
-        Image(
-          image: AssetImage('images/cropped7.png'),
-        ),
-        Image(
-          image: AssetImage('images/cropped6.png'),
-        ),
-        Image(
-          image: AssetImage('images/cropped1.png'),
-        ),
-      ]),
+      body: Stack(
+        children:<Widget>[
+          Center(child: Text("data")),
+          ListView(scrollDirection: Axis.horizontal, children: [
+          Image(
+            image: AssetImage('images/cropped5.png'),
+          ),
+          Image(
+            image: AssetImage('images/cropped7.png'),
+          ),
+          Image(
+            image: AssetImage('images/cropped6.png'),
+          ),
+          Image(
+            image: AssetImage('images/cropped1.png'),
+          )
+        ]),
+          Column(
+            children: <Widget>[
+              Expanded(child: Center(child: Text("data"))),
+              Expanded(child: Center(child: Text("data"))),
+              Expanded(child: Center(child: Text("data"))),
+            ],
+          ),]),
     );
     // return
   }
