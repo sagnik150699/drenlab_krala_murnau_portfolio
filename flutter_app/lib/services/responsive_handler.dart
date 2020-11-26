@@ -3,9 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_app/ui/mobile.dart';
 import 'package:flutter_app/ui/desktop.dart';
 
-
-
-
 class Services extends StatefulWidget {
   @override
   _ServicesState createState() => _ServicesState();
@@ -14,12 +11,9 @@ class Services extends StatefulWidget {
 class _ServicesState extends State<Services> {
   @override
   Widget build(BuildContext context) {
-  //  var deviceData= MediaQuery.of(context).orientation;
+    //  var deviceData= MediaQuery.of(context).orientation;
     // double _width = MediaQuery.of(context).size.width;
     // double _height = MediaQuery.of(context).size.height;
-
-
-
 
     return MaterialApp(
       theme: ThemeData.dark(),
@@ -30,17 +24,24 @@ class _ServicesState extends State<Services> {
               if (constraints.maxWidth > 600) {
                 return Desktop();
               } else {
-                return  Mobile();
+                return Mobile();
               }
             },
           ),
           appBar: AppBar(
+            title: Text(
+              "Klara Murnau",
+              style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Pacifico'),
+            ),
+            bottomOpacity: 100,
             leading: IconButton(
               icon: Icon(
-
                 Icons.menu,
               ),
-              onPressed: (){},
+              onPressed: () {},
             ),
           ),
           // body: Center(
