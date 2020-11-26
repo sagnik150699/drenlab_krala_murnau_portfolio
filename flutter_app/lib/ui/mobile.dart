@@ -1,8 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Mobile extends StatelessWidget {
+class Mobile extends StatefulWidget {
   @override
+  _Mobile createState() => new _Mobile();
+}
+
+class _Mobile extends State<Mobile>{
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: Drawer(
@@ -59,7 +63,8 @@ class Mobile extends StatelessWidget {
             image: AssetImage('images/cropped1.png'),
           )
         ]),
-          Column(
+          Column(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Expanded(child: Center(child: Text("data", style: TextStyle(fontSize: 30),))),
               Expanded(child: Center(child: Text("data", style: TextStyle(fontSize: 30)))),
