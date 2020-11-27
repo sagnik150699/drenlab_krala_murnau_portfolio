@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-class Desktop extends StatelessWidget {
+class Web extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(

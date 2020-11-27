@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_app/ui/mobile.dart';
-import 'package:flutter_app/ui/desktop.dart';
+import 'package:flutter_app/ui/web.dart';
 
 class Services extends StatefulWidget {
   @override
@@ -20,7 +20,7 @@ class _ServicesState extends State<Services> {
       home: LayoutBuilder(
         builder: (context, constraints) {
           if (constraints.maxWidth > 600) {
-            return Desktop();
+            return Web();
           } else {
             return Mobile();
           }
