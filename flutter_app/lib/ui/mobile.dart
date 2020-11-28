@@ -178,10 +178,11 @@ class _Mobile extends State<Mobile> {
         ),
 
         Padding(
-          padding: const EdgeInsets.only(top: 535, left: 190),
+          padding: const EdgeInsets.only(top: 535, left: 150),
           child: CarouselSlider(
             items: variables.item3,
-            options: CarouselOptions( height: 70,
+            options: CarouselOptions(
+              height: 60,
               aspectRatio: 16 / 9,
               viewportFraction: 0.911,
               initialPage: 0,

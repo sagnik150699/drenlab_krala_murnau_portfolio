@@ -61,12 +61,12 @@ class Variables {
 
 
   List<Widget> item3 = [ Card(
-    color: Colors.black,
+    //color: Colors.black,
     shadowColor: Colors.deepOrange,
-    elevation: 1,
+    elevation: 0,
     child: Text(
-      "Germany",
-      style: GoogleFonts.oswald(fontSize: 35,textStyle: TextStyle(color: Colors.white)),
+      "Munich, Germany",
+      style: GoogleFonts.sedgwickAveDisplay(fontSize: 35,textStyle: TextStyle(color: Colors.black)),
     ),
   ),
   ];
