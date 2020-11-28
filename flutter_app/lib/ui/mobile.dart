@@ -123,12 +123,11 @@ class _Mobile extends State<Mobile> {
           ]),
         ),
       ),
-      // SizedBox(
-      //   height: 50,
-      // ),
+
       Container(
+        padding: EdgeInsets.only(left: 20,right: 20),
         height: 400,
-        width: 500,
+        width: 5,
         color: Colors.black,
       ),
       Stack(children: <Widget>[
