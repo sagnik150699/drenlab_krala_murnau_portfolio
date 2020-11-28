@@ -70,7 +70,7 @@ class _Mobile extends State<Mobile> {
                     size: 40,
                   ),
                   onPressed: () {
-                    // Scaffold.of(context).openDrawer();
+                     Scaffold.of(context).openDrawer();
                   },
                 ),
               ),
@@ -123,8 +123,13 @@ class _Mobile extends State<Mobile> {
           ]),
         ),
       ),
-      SizedBox(
-        height: 50,
+      // SizedBox(
+      //   height: 50,
+      // ),
+      Container(
+        height: 400,
+        width: 500,
+        color: Colors.black,
       ),
       Stack(children: <Widget>[
         Padding(
@@ -291,6 +296,11 @@ class _Mobile extends State<Mobile> {
 
     return SafeArea(
       child: Scaffold(
+        drawer: Drawer(
+          child: ListView(
+            children: [Text("Word 1")],
+          ),
+        ),
         body: ListView.builder(
           controller: controller,
           physics: BouncingScrollPhysics(),
