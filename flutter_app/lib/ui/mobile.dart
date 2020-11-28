@@ -130,7 +130,7 @@ class _Mobile extends State<Mobile> {
         Padding(
             padding: const EdgeInsets.all(0),
             child: CarouselSlider(
-                items: Variables().item,
+                items: Variables().item2,
                 options: CarouselOptions(
                   height: 500,
                   aspectRatio: 16 / 9,
@@ -171,31 +171,31 @@ class _Mobile extends State<Mobile> {
             elevation: 10,
             color: Colors.black,
             child: Text(
-              "Krala Murnau",
+              "LifeStyle",
               style: GoogleFonts.oswald(fontSize: 45, color: Colors.white),
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top: 540, left: 125),
-          child: Card(
-            shadowColor: Colors.black,
-            elevation: 0,
-            child: Text(
-              "Private Detective",
-              style: GoogleFonts.sedgwickAveDisplay(fontSize: 35),
             ),
           ),
         ),
 
         Padding(
-          padding: const EdgeInsets.only(left: 135, top: 580),
-          child: Container(
-              child: Text("Current Location: $city",
-                  style: GoogleFonts.inconsolata(
-                      fontSize: 15,
-                      textStyle: TextStyle(color: Colors.black45)))),
+          padding: const EdgeInsets.only(top: 535, left: 190),
+          child: CarouselSlider(
+            items: variables.item3,
+            options: CarouselOptions( height: 70,
+              aspectRatio: 16 / 9,
+              viewportFraction: 0.911,
+              initialPage: 0,
+              enableInfiniteScroll: true,
+              reverse: false,
+              autoPlay: true,
+              autoPlayInterval: Duration(seconds: 3),
+              autoPlayAnimationDuration: Duration(milliseconds: 800),
+              autoPlayCurve: Curves.easeInOutSine,
+              enlargeCenterPage: true,
+              scrollDirection: Axis.horizontal,),
+          ),
         ),
+
         Padding(
           padding: const EdgeInsets.only(left: 20, top: 625),
           child: ListTile(
