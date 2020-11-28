@@ -147,19 +147,21 @@ class _Mobile extends State<Mobile> {
                 ))),
         Padding(
           padding: const EdgeInsets.only(top: 5),
-          child: ListTile(
-            title: Text(
-              "",
-              style: GoogleFonts.oswald(fontSize: 40),
-            ),
-            leading: IconButton(
-              icon: Icon(
-                Icons.menu,
-                size: 40,
+          child: InteractiveViewer(
+            child: ListTile(
+              title: Text(
+                "",
+                style: GoogleFonts.oswald(fontSize: 40),
               ),
-              onPressed: () {
-                // Scaffold.of(context).openDrawer();
-              },
+              leading: IconButton(
+                icon: Icon(
+                  Icons.menu,
+                  size: 40,
+                ),
+                onPressed: () {
+                  // Scaffold.of(context).openDrawer();
+                },
+              ),
             ),
           ),
         ),
@@ -295,7 +297,7 @@ class _Mobile extends State<Mobile> {
           cacheExtent: 100,
           itemCount: itemData.length,
           itemBuilder: (context, index) {
-            return (itemData[index]);
+            return itemData[index];
           },
         ),
       ),
