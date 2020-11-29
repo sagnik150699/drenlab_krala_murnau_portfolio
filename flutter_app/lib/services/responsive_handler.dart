@@ -16,7 +16,7 @@ class _ServicesState extends State<Services> {
     // double _height = MediaQuery.of(context).size.height;
 
     return MaterialApp(
-      theme: ThemeData.light(),
+      //theme: ThemeData.dark(),
       home: LayoutBuilder(
         builder: (context, constraints) {
           if (constraints.maxWidth > 600) {

@@ -13,7 +13,7 @@ class _Mobile extends State<Mobile> {
   var city = 'Berlin,Germany';
 
   Variables variables = new Variables();
-
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     final double categoryHeight = size.height;
@@ -57,24 +57,24 @@ class _Mobile extends State<Mobile> {
                       enlargeCenterPage: true,
                       scrollDirection: Axis.horizontal,
                     ))),
-            Padding(
-              padding: const EdgeInsets.only(top: 5),
-              child: ListTile(
-                title: Text(
-                  "",
-                  style: GoogleFonts.oswald(fontSize: 40),
-                ),
-                leading: IconButton(
-                  icon: Icon(
-                    Icons.menu,
-                    size: 40,
-                  ),
-                  onPressed: () {
-                     Scaffold.of(context).openDrawer();
-                  },
-                ),
-              ),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.only(top: 5),
+            //   child: ListTile(
+            //     title: Text(
+            //       "",
+            //       style: GoogleFonts.oswald(fontSize: 40),
+            //     ),
+            //     leading: IconButton(
+            //       icon: Icon(
+            //         Icons.menu,
+            //         size: 40,
+            //       ),
+            //       onPressed: () {
+            //          Scaffold.of(context).openDrawer();
+            //       },
+            //     ),
+            //   ),
+            // ),
             Padding(
               padding: const EdgeInsets.only(top: 450, left: 30),
               child: Card(
@@ -157,26 +157,26 @@ class _Mobile extends State<Mobile> {
                   enlargeCenterPage: true,
                   scrollDirection: Axis.horizontal,
                 ))),
-        Padding(
-          padding: const EdgeInsets.only(top: 5),
-          child: InteractiveViewer(
-            child: ListTile(
-              title: Text(
-                "",
-                style: GoogleFonts.oswald(fontSize: 40),
-              ),
-              leading: IconButton(
-                icon: Icon(
-                  Icons.menu,
-                  size: 40,
-                ),
-                onPressed: () {
-                  // Scaffold.of(context).openDrawer();
-                },
-              ),
-            ),
-          ),
-        ),
+        // Padding(
+        //   padding: const EdgeInsets.only(top: 5),
+        //   child: InteractiveViewer(
+        //     child: ListTile(
+        //       title: Text(
+        //         "",
+        //         style: GoogleFonts.oswald(fontSize: 40),
+        //       ),
+        //       leading: IconButton(
+        //         icon: Icon(
+        //           Icons.menu,
+        //           size: 40,
+        //         ),
+        //         onPressed: () {
+        //           // Scaffold.of(context).openDrawer();
+        //         },
+        //       ),
+        //     ),
+        //   ),
+        // ),
         Padding(
           padding: const EdgeInsets.only(top: 450, left: 30),
           child: Card(
@@ -240,24 +240,24 @@ class _Mobile extends State<Mobile> {
                   enlargeCenterPage: true,
                   scrollDirection: Axis.horizontal,
                 ))),
-        Padding(
-          padding: const EdgeInsets.only(top: 5),
-          child: ListTile(
-            title: Text(
-              "",
-              style: GoogleFonts.oswald(fontSize: 40),
-            ),
-            leading: IconButton(
-              icon: Icon(
-                Icons.menu,
-                size: 40,
-              ),
-              onPressed: () {
-                // Scaffold.of(context).openDrawer();
-              },
-            ),
-          ),
-        ),
+        // Padding(
+        //   padding: const EdgeInsets.only(top: 5),
+        //   child: ListTile(
+        //     title: Text(
+        //       "",
+        //       style: GoogleFonts.oswald(fontSize: 40),
+        //     ),
+        //     leading: IconButton(
+        //       icon: Icon(
+        //         Icons.menu,
+        //         size: 40,
+        //       ),
+        //       onPressed: () {
+        //         // Scaffold.of(context).openDrawer();
+        //       },
+        //     ),
+        //   ),
+        // ),
         Padding(
           padding: const EdgeInsets.only(top: 450, left: 30),
           child: Card(
@@ -303,21 +303,67 @@ class _Mobile extends State<Mobile> {
 
     return SafeArea(
       child: Scaffold(
-        drawer: Drawer(
+        drawer: new Drawer(
+
           child: ListView(
-            children: [Text("Word 1")],
+            // Important: Remove any padding from the ListView.
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              // DrawerHeader(
+              //   child: Text('Drawer Header'),
+              //   decoration: BoxDecoration(
+              //     color: Colors.blue,
+              //   ),
+              // ),
+              ListTile(
+                title: Text('Item 1'),
+                onTap: () {
+                  // Update the state of the app.
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                title: Text('Item 2'),
+                onTap: () {
+                  Navigator.pop(context);
+                  // Update the state of the app.
+                  // ...
+                },
+              ),
+            ],
           ),
         ),
-        body: ListView.builder(
-          controller: controller,
-          physics: BouncingScrollPhysics(),
-          addAutomaticKeepAlives: false,
-          cacheExtent: 100,
-          itemCount: itemData.length,
-          itemBuilder: (context, index) {
-            return itemData[index];
-          },
+        key: _scaffoldKey,
+        appBar: AppBar(
+          backgroundColor: Colors.black,
+          leading: new IconButton(
+            color: Colors.white,
+            icon: new Icon( Icons.menu, size: 40,),
+            onPressed: () => _scaffoldKey.currentState.openDrawer(),
+          ),
+
         ),
+        // floatingActionButton: Padding(
+        //
+        //   padding: const EdgeInsets.only( bottom: 670),
+        //   child: new IconButton(
+        //     color: Colors.white,
+        //     icon: new Icon( Icons.menu, size: 40,),
+        //     onPressed: () => _scaffoldKey.currentState.openDrawer(),
+        //   ),
+        // ),
+
+        body: ListView.builder(
+        controller: controller,
+        physics: BouncingScrollPhysics(),
+        addAutomaticKeepAlives: false,
+        cacheExtent: 100,
+        itemCount: itemData.length,
+        itemBuilder: (context, index) {
+          return itemData[index];
+        },
+          ),
+
       ),
     );
     // return
