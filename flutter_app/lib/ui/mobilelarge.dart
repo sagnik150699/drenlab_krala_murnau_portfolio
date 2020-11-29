@@ -4,12 +4,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_app/components/variables.dart';
 
-class Mobile extends StatefulWidget {
+class Mobile1 extends StatefulWidget {
   @override
-  _Mobile createState() => new _Mobile();
+  _Mobile1 createState() => new _Mobile1();
 }
 
-class _Mobile extends State<Mobile> {
+class _Mobile1 extends State<Mobile1> {
   var city = 'Berlin,Germany';
 
   Variables variables = new Variables();
@@ -20,8 +20,6 @@ class _Mobile extends State<Mobile> {
     ScrollController controller = ScrollController();
     bool closeTopContainer = false;
     print(size);
-
-
 
     controller.addListener(() {
       setState(() {
@@ -34,7 +32,7 @@ class _Mobile extends State<Mobile> {
         duration: const Duration(microseconds: 200),
         width: size.width,
         alignment: Alignment.topCenter,
-        height: closeTopContainer?0:categoryHeight,
+        height: closeTopContainer ? 0 : categoryHeight,
         child: SizedBox(
           height: 900,
           width: 700,
@@ -123,19 +121,43 @@ class _Mobile extends State<Mobile> {
           ]),
         ),
       ),
-
-      Container(
-
-        padding: EdgeInsets.only(left: 20,right: 20),
-        height: 400,
-        width: 5,
-        color: Colors.black,
-        child: Column(
-          children: <Widget>[
-            Expanded(flex: 2, child: Text("data",style: TextStyle(color: Colors.white,fontSize: 40),)),
-            Expanded(child: Text("data",style: TextStyle(color: Colors.white),)),
-
-          ],
+      Padding(
+        padding: const EdgeInsets.only(right: 20, left: 20),
+        child: Container(
+          padding: EdgeInsets.only(left: 20, right: 20),
+          height: 300,
+          // width: 5,
+          color: Colors.black,
+          child: Column(
+            children: <Widget>[
+              Expanded(
+                  flex: 2,
+                  child: Center(
+                    child: Text(
+                      "Get your case " "Solved",
+                      textAlign: TextAlign.center ,
+                      style:
+                          GoogleFonts.oswald(fontSize: 45, color: Colors.white),
+                    ),
+                  )),
+              Expanded( flex: 1,
+                  child: FlatButton(
+                    onPressed: null,
+                    child: ListTile(
+                      shape: RoundedRectangleBorder(),
+                      title: Card(
+                        shape: RoundedRectangleBorder(),
+                        child: Text(
+                "Hire Professional ",
+                 textAlign: TextAlign.center,
+                 style:
+    GoogleFonts.oswald(fontSize: 25, color: Colors.black, letterSpacing: 3),
+              ),
+                      ),
+                    ),
+                  )),
+            ],
+          ),
         ),
       ),
       Stack(children: <Widget>[
@@ -205,7 +227,8 @@ class _Mobile extends State<Mobile> {
               autoPlayAnimationDuration: Duration(milliseconds: 800),
               autoPlayCurve: Curves.easeInOutSine,
               enlargeCenterPage: true,
-              scrollDirection: Axis.horizontal,),
+              scrollDirection: Axis.horizontal,
+            ),
           ),
         ),
 
@@ -275,7 +298,7 @@ class _Mobile extends State<Mobile> {
             shadowColor: Colors.black,
             elevation: 0,
             child: Text(
-              "Private Detective",
+              "Kaffee und Milch",
               style: GoogleFonts.sedgwickAveDisplay(fontSize: 35),
             ),
           ),
@@ -300,11 +323,9 @@ class _Mobile extends State<Mobile> {
       ]),
     ];
 
-
     return SafeArea(
       child: Scaffold(
         drawer: new Drawer(
-
           child: ListView(
             // Important: Remove any padding from the ListView.
             padding: EdgeInsets.zero,
@@ -338,10 +359,12 @@ class _Mobile extends State<Mobile> {
           backgroundColor: Colors.black,
           leading: new IconButton(
             color: Colors.white,
-            icon: new Icon( Icons.menu, size: 40,),
+            icon: new Icon(
+              Icons.menu,
+              size: 40,
+            ),
             onPressed: () => _scaffoldKey.currentState.openDrawer(),
           ),
-
         ),
         // floatingActionButton: Padding(
         //
@@ -354,16 +377,15 @@ class _Mobile extends State<Mobile> {
         // ),
 
         body: ListView.builder(
-        controller: controller,
-        physics: BouncingScrollPhysics(),
-        addAutomaticKeepAlives: false,
-        cacheExtent: 100,
-        itemCount: itemData.length,
-        itemBuilder: (context, index) {
-          return itemData[index];
-        },
-          ),
-
+          controller: controller,
+          physics: BouncingScrollPhysics(),
+          addAutomaticKeepAlives: false,
+          cacheExtent: 100,
+          itemCount: itemData.length,
+          itemBuilder: (context, index) {
+            return itemData[index];
+          },
+        ),
       ),
     );
     // return

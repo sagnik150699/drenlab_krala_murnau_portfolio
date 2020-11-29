@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_app/ui/mobile.dart';
+import 'package:flutter_app/ui/mobilelarge.dart';
+import 'package:flutter_app/ui/mobilesmall.dart';
 import 'package:flutter_app/ui/web.dart';
 
 class Services extends StatefulWidget {
@@ -21,9 +22,14 @@ class _ServicesState extends State<Services> {
         builder: (context, constraints) {
           if (constraints.maxWidth > 600) {
             return Web();
-          } else {
-            return Mobile();
           }
+          if(constraints.maxHeight > 700 && constraints.maxHeight< 800){
+            return Mobile1();
+          }
+          else {
+            return Mobile2();
+          }
+
         },
       ),
     );
