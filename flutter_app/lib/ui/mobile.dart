@@ -125,10 +125,18 @@ class _Mobile extends State<Mobile> {
       ),
 
       Container(
+
         padding: EdgeInsets.only(left: 20,right: 20),
         height: 400,
         width: 5,
         color: Colors.black,
+        child: Column(
+          children: <Widget>[
+            Expanded(flex: 2, child: Text("data",style: TextStyle(color: Colors.white,fontSize: 40),)),
+            Expanded(child: Text("data",style: TextStyle(color: Colors.white),)),
+
+          ],
+        ),
       ),
       Stack(children: <Widget>[
         Padding(
