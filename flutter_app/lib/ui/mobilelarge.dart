@@ -348,14 +348,20 @@ class _Mobile1 extends State<Mobile1> {
                 pinned: true,
                 flexibleSpace: FlexibleSpaceBar(
                   centerTitle: true,
-                  title: Padding(
-                    padding: const EdgeInsets.only(top: 0, right: 80),
-                    child: Card(
-                      elevation: 0,
-                      color: Colors.black,
-                      child: Text(
-                        "Krala Murnau",
-                        style: GoogleFonts.oswald(fontSize: 32, color: Colors.white),
+                  title: AnimatedDefaultTextStyle(
+                    //Change Color of card and size of fonts in Vertical Drag( changeCard funtion to true)
+                    style: changeCard? GoogleFonts.oswald(fontSize: 32, color: Colors.white)
+                     : GoogleFonts.oswald(fontSize: 15, color: Colors.black),
+                    duration: const Duration(milliseconds: 200),
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 0, right: 80),
+                      child: Card(
+                        elevation: 0,
+                        color: changeCard? Colors.white:Colors.black,
+                        child: Text(
+                          "Krala Murnau",
+                          style: GoogleFonts.oswald(fontSize: 32, color: Colors.white),
+                        ),
                       ),
                     ),
                   ),
@@ -383,7 +389,7 @@ class _Mobile1 extends State<Mobile1> {
           body:
           GestureDetector(
             onDoubleTap: ()=> setState((){
-              changeCard=true;
+             // changeCard=true;
             }),
             child: ListView.builder(
               dragStartBehavior: DragStartBehavior.start,

@@ -28,6 +28,7 @@ class _Mobile2 extends State<Mobile2> {
         closeTopContainer = controller.offset > 50;
       });
     });
+//Items of 2nd Scroll
 
     List<Widget> itemData = [
       Stack(children: <Widget>[
@@ -341,14 +342,21 @@ class _Mobile2 extends State<Mobile2> {
                 pinned: true,
                 flexibleSpace: FlexibleSpaceBar(
                   centerTitle: true,
-                  title: Padding(
-                    padding: const EdgeInsets.only(top: 0, right: 80),
-                    child: Card(
-                      elevation: 0,
-                      color: Colors.black,
-                      child: Text(
-                        "Krala Murnau",
-                        style: GoogleFonts.oswald(fontSize: 25, color: Colors.white),
+                  title: AnimatedDefaultTextStyle(
+                    //Change Color of card and size of fonts in Vertical Drag( changeCard funtion to true)
+
+                  style: changeCard? GoogleFonts.oswald(fontSize: 30, color: Colors.white)
+                        : GoogleFonts.oswald(fontSize: 15, color: Colors.black),
+                    duration: const Duration(milliseconds: 200),
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 0, right: 80),
+                      child: Card(
+                        elevation: 0,
+                        color: changeCard? Colors.white:Colors.black,
+                        child: Text(
+                          "Krala Murnau",
+                          style: GoogleFonts.oswald(fontSize: 28, color: Colors.white),
+                        ),
                       ),
                     ),
                   ),
@@ -372,6 +380,7 @@ class _Mobile2 extends State<Mobile2> {
               )
             ];
           },
+          //RestOftheScrolls
           body:
           GestureDetector(
            onDoubleTap: ()=> setState((){
