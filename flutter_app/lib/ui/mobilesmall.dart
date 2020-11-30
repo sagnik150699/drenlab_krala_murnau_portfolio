@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -19,7 +20,8 @@ class _Mobile2 extends State<Mobile2> {
     final double categoryHeight = size.height;
     ScrollController controller = ScrollController();
     bool closeTopContainer = false;
-    print(size);
+    bool changeCard = false;
+    print(closeTopContainer);
 
     controller.addListener(() {
       setState(() {
@@ -268,6 +270,7 @@ class _Mobile2 extends State<Mobile2> {
 
     return SafeArea(
       child: Scaffold(
+
         drawer: new Drawer(
           child: ListView(
             // Important: Remove any padding from the ListView.
@@ -346,7 +349,7 @@ class _Mobile2 extends State<Mobile2> {
                       color: Colors.black,
                       child: Text(
                         "Krala Murnau",
-                        style: GoogleFonts.oswald(fontSize: 30, color: Colors.white),
+                        style: GoogleFonts.oswald(fontSize: 25, color: Colors.white),
                       ),
                     ),
                   ),
@@ -371,16 +374,23 @@ class _Mobile2 extends State<Mobile2> {
             ];
           },
           body:
-          ListView.builder(
-          controller: controller,
-          physics: BouncingScrollPhysics(),
-          addAutomaticKeepAlives: false,
-          cacheExtent: 100,
-          itemCount: itemData.length,
-          itemBuilder: (context, index) {
-            return itemData[index];
-          },
+          GestureDetector(
+           onDoubleTap: ()=> setState((){
+             changeCard=true;
+         }),
+
+            child: ListView.builder(
+              dragStartBehavior: DragStartBehavior.start,
+            controller: controller,
+            physics: BouncingScrollPhysics(),
+            addAutomaticKeepAlives: false,
+            cacheExtent: 100,
+            itemCount: itemData.length,
+            itemBuilder: (context, index) {
+              return itemData[index];
+            },
         ),
+          ),
         ),
       ),
     );
@@ -395,7 +405,10 @@ class _Mobile2 extends State<Mobile2> {
 
 
 
-// onVerticalDragUpdate: (DragUpdateDetails details){  print(details);},
 // onVerticalDragStart: (DragStartDetails details){
 //   print(details);
 // },
+
+// onVerticalDragUpdate: (DragUpdateDetails details){ setState(() {
+//   changeCard=true;
+// }); print(details);},
