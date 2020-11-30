@@ -277,27 +277,48 @@ class _Mobile2 extends State<Mobile2> {
             // Important: Remove any padding from the ListView.
             padding: EdgeInsets.zero,
             children: <Widget>[
-              // DrawerHeader(
-              //   child: Text('Drawer Header'),
-              //   decoration: BoxDecoration(
-              //     color: Colors.blue,
-              //   ),
-              // ),
+              DrawerHeader(
+                child:  Image(
+                  height: 300,
+                  image: AssetImage('images/circle-cropped.png'),
+                ),
+              ),
               ListTile(
-                title: Text('Item 1'),
+                title: Card( child: Text('Life Stlyle',textAlign: TextAlign.center, style: GoogleFonts.oswald(fontSize: 30,color: Colors.white),), color: Colors.black,),
+                onTap: () {
+                  // Update the state of the app.
+                  Navigator.pop(context);
+                },
+              ),
+      ListTile(
+        title: Card( child: Text('Cafe',textAlign: TextAlign.center, style: GoogleFonts.oswald(fontSize: 30,color: Colors.white),), color: Colors.black,),
+        onTap: () {
+          // Update the state of the app.
+          Navigator.pop(context);
+        },
+      ),
+              ListTile(
+                title: Card( child: Text('Contact',textAlign: TextAlign.center, style: GoogleFonts.oswald(fontSize: 30,color: Colors.white),), color: Colors.black,),
                 onTap: () {
                   // Update the state of the app.
                   Navigator.pop(context);
                 },
               ),
               ListTile(
-                title: Text('Item 2'),
+                title: Card( child: Text('Team',textAlign: TextAlign.center, style: GoogleFonts.oswald(fontSize: 30,color: Colors.white),), color: Colors.black,),
                 onTap: () {
-                  Navigator.pop(context);
                   // Update the state of the app.
-                  // ...
+                  Navigator.pop(context);
                 },
               ),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[ Icon(Icons.call),
+                  Icon(Icons.alternate_email_outlined),
+                    Icon(Icons.message_outlined)],),
+              )
             ],
           ),
         ),
