@@ -322,12 +322,11 @@ class _Mobile2 extends State<Mobile2> {
         //   ),
         // ),
 
-        body:
-        NestedScrollView(
-          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-            return <Widget>[
-              SliverAppBar(
-                leading: new IconButton(
+        body:NestedScrollView(
+    headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+    return <Widget>[
+    SliverAppBar(
+    leading: new IconButton(
                   padding: EdgeInsets.only(top: 0,left: 7),
                   color: Colors.black,
                   icon: new Icon(
