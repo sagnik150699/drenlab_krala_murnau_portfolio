@@ -328,6 +328,7 @@ class _Mobile1 extends State<Mobile1> {
         ),
         key: _scaffoldKey,
         // appBar: AppBar(
+
         //   backgroundColor: Colors.black,
         //   leading: new IconButton(
         //     color: Colors.white,
