@@ -18,260 +18,234 @@ class _Mobile2 extends State<Mobile2> {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     final double categoryHeight = size.height;
+    final double categoryWidth= size.width;
     ScrollController controller = ScrollController();
-    bool closeTopContainer = false;
+  //  bool closeTopContainer = false;
     bool changeCard = false;
-    print(closeTopContainer);
-
-    controller.addListener(() {
-      setState(() {
-        closeTopContainer = controller.offset > 50;
-      });
-    });
+    print("Width $categoryWidth");
+    print("Height $categoryHeight");
+    List<Widget> itemText = [ ListTile( title: Text(
+        "Munich, Germany",
+        style: GoogleFonts.sedgwickAveDisplay(fontSize: categoryWidth/12,textStyle: TextStyle(color: Colors.black)),
+      ),
+    ),];
 //Items of 2nd Scroll
+//     List<Widget> itemData = [
+//       Row(crossAxisAlignment: CrossAxisAlignment.center,
+//           children: <Widget>[
+//         //Responsive icon search
+//         Expanded(
+//           child: Icon(
+//             Icons.search,
+//             size: categoryWidth/10,
+//           ),
+//         ),
+//         //Responsive private investigator
+//         Align(
+//           alignment: Alignment.topRight,
+//           child: Column(
+//             children:<Widget> [
+//               Card(
+//                 shadowColor: Colors.black,
+//                 elevation: 0,
+//                 child: Text(
+//                   "Private Investigator",
+//                   style: GoogleFonts.sedgwickAveDisplay(fontSize: categoryWidth/11),
+//                 ),
+//               ),
+//               //Responsive city
+//               Container(
+//                   child: Text("Current Location: $city",
+//                       style: GoogleFonts.inconsolata(
+//                           fontSize: categoryWidth/28,
+//                           textStyle: TextStyle(color: Colors.black45)))),
+//             ],
+//           ),
+//         ),
+//       ]),
+//         //Responsive
+//         SizedBox(
+//           height: size.width/15,
+//           width: 10,
+//         ),
+//         //Responsive description
+//         ListTile(
+//             title: Text(
+//               "Providing private detective services and private investigation services to businesses ",
+//               style: GoogleFonts.inconsolata(color: Colors.black38,fontSize: categoryWidth/27),
+//             )),
+//
+//       //Hire Professional content
+//       //Made responsive
+//       Padding(
+//         padding: const EdgeInsets.only(right: 20, left: 20),
+//         child: Container(
+//           padding: EdgeInsets.only(left: 20, right: 20),
+//           height: categoryWidth/1.37,
+//           // width: 5,
+//           color: Colors.black,
+//           child: Column(
+//             children: <Widget>[
+//               Expanded(
+//                   flex: 2,
+//                   child: Center(
+//                     child: Text(
+//                       "Get your case " "Solved",
+//                       textAlign: TextAlign.center ,
+//                       style:
+//                       GoogleFonts.oswald(fontSize: categoryWidth/9, color: Colors.white),
+//                     ),
+//                   )),
+//                 Expanded( flex: 1,
+//                     child: FlatButton(
+//                            onPressed: null,
+//                            child: ListTile(
+//                            shape: RoundedRectangleBorder(),
+//                            title: Card(
+//                           shape: RoundedRectangleBorder(),
+//                           child: Text(
+//                           "Hire Professional ",
+//                           textAlign: TextAlign.center,
+//                           style:
+//                           GoogleFonts.oswald(fontSize: categoryWidth/16, color: Colors.black, letterSpacing: 3),
+//                         ),
+//                       ),
+//                     ),
+//                   )),
+//             ],
+//           ),
+//         ),
+//       ),
+//
+//       //2nd stack
+//       Stack( alignment: Alignment.bottomLeft,
+//           children: <Widget>[
+//         //Carausal
+//           CarouselSlider(
+//             items: Variables().item2,
+//             options: CarouselOptions(
+//               height: categoryWidth/0.8,
+//             //  width:
+//               aspectRatio: 16 / 9,
+//               viewportFraction: 0.911,
+//               initialPage: 0,
+//               enableInfiniteScroll: true,
+//               reverse: false,
+//               autoPlay: true,
+//               autoPlayInterval: Duration(seconds: 3),
+//               autoPlayAnimationDuration: Duration(milliseconds: 800),
+//               autoPlayCurve: Curves.easeInOutSine,
+//               enlargeCenterPage: true,
+//               scrollDirection: Axis.horizontal,
+//             )),
+// // Responsive Lifestyle
+//           Card(
+//             elevation: 10,
+//             color: Colors.black,
+//             child: Text(
+//               "LifeStyle",
+//               style: GoogleFonts.oswald(fontSize: categoryWidth/9, color: Colors.white),
+//             ),
+//           ),
+//       ]),
+// //Responsive City
+//            Padding(
+//              padding: EdgeInsets.only(left: 120),
+//              child: CarouselSlider(
+//              items: itemText,
+//                     options: CarouselOptions(
+//              height: 60,
+//              aspectRatio: 16 / 9,
+//              viewportFraction: 0.911,
+//              initialPage: 0,
+//              enableInfiniteScroll: true,
+//              reverse: false,
+//              autoPlay: true,
+//              autoPlayInterval: Duration(seconds: 3),
+//              autoPlayAnimationDuration: Duration(milliseconds: 800),
+//              autoPlayCurve: Curves.easeInOutSine,
+//              enlargeCenterPage: true,
+//              scrollDirection: Axis.horizontal,
+//               ),
+//           ),
+//            ),
+// //Responsive Text
+//         ListTile(
+//             title: Text(
+//               "Providing private detective services and private investigation services to businesses ",
+//               style: GoogleFonts.inconsolata(color: Colors.black38,fontSize: categoryWidth/25),
+//             )),
+//       // ]),
+//       // SizedBox(
+//       //   height: 40,
+//       // ),
+//       //3rd stack
+//       Stack( alignment: Alignment.bottomLeft,
+//           children: <Widget>[
+//         //3rd Carousal Responsive
+//         CarouselSlider(
+//             items: Variables().item,
+//             options: CarouselOptions(
+//               height: categoryWidth/0.8,
+//               aspectRatio: 16 / 9,
+//               viewportFraction: 0.911,
+//               initialPage: 0,
+//               enableInfiniteScroll: true,
+//               reverse: false,
+//               autoPlay: true,
+//               autoPlayInterval: Duration(seconds: 3),
+//               autoPlayAnimationDuration: Duration(milliseconds: 800),
+//               autoPlayCurve: Curves.easeInOutSine,
+//               enlargeCenterPage: true,
+//               scrollDirection: Axis.horizontal,
+//             )),
+//        //3rd Krala Murnau text Responsie
+//         Card(
+//           elevation: 10,
+//           color: Colors.black,
+//           child: Text(
+//             "Krala Murnau",
+//             style: GoogleFonts.oswald(fontSize: categoryWidth/9, color: Colors.white),
+//           ),
+//         ),
+//       ]),
+//
+//       //Kaffee Und milch responsive
+//         Align(
+//           alignment: Alignment.topRight,
+//           child: Card(
+//             shadowColor: Colors.black,
+//             elevation: 0,
+//             child: Text(
+//               "Kaffee und Milch",
+//               style: GoogleFonts.sedgwickAveDisplay(fontSize: categoryWidth/11),
+//             ),
+//           ),
+//         ),
+//         ListTile(
+//             title: Center(
+//               child: Text(
+//                 "Providing private detective services and private investigation services to businesses ",
+//                 style: GoogleFonts.inconsolata(color: Colors.black38),
+//               ),
+//             )),
+//
+//     ];
 
-    List<Widget> itemData = [
-      Stack(children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.only(top: 0, left: 125),
-          child: Card(
-            shadowColor: Colors.black,
-            elevation: 0,
-            child: Text(
-              "Private Detective",
-              style: GoogleFonts.sedgwickAveDisplay(fontSize: 35),
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top: 10, left: 70),
-          child: Icon(
-            Icons.search,
-            size: 35,
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 135, top: 40),
-          child: Container(
-              child: Text("Current Location: $city",
-                  style: GoogleFonts.inconsolata(
-                      fontSize: 15,
-                      textStyle: TextStyle(color: Colors.black45)))),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 20, top: 80),
-          child: ListTile(
-              title: Text(
-                "Providing private detective services and private investigation services to businesses ",
-                style: GoogleFonts.inconsolata(color: Colors.black38),
-              )),
-        ),
-      ]),
-      Padding(
-        padding: const EdgeInsets.only(right: 20, left: 20),
-        child: Container(
-          padding: EdgeInsets.only(left: 20, right: 20),
-          height: 300,
-          // width: 5,
-          color: Colors.black,
-          child: Column(
-            children: <Widget>[
-              Expanded(
-                  flex: 2,
-                  child: Center(
-                    child: Text(
-                      "Get your case " "Solved",
-                      textAlign: TextAlign.center ,
-                      style:
-                      GoogleFonts.oswald(fontSize: 45, color: Colors.white),
-                    ),
-                  )),
-              Expanded( flex: 1,
-                  child: FlatButton(
-                    onPressed: null,
-                    child: ListTile(
-                      shape: RoundedRectangleBorder(),
-                      title: Card(
-                        shape: RoundedRectangleBorder(),
-                        child: Text(
-                          "Hire Professional ",
-                          textAlign: TextAlign.center,
-                          style:
-                          GoogleFonts.oswald(fontSize: 25, color: Colors.black, letterSpacing: 3),
-                        ),
-                      ),
-                    ),
-                  )),
-            ],
-          ),
-        ),
-      ),
-      Stack(children: <Widget>[
-        Padding(
-            padding: const EdgeInsets.all(0),
-            child: CarouselSlider(
-                items: Variables().item2,
-                options: CarouselOptions(
-                  height: 500,
-                  aspectRatio: 16 / 9,
-                  viewportFraction: 0.911,
-                  initialPage: 0,
-                  enableInfiniteScroll: true,
-                  reverse: false,
-                  autoPlay: true,
-                  autoPlayInterval: Duration(seconds: 3),
-                  autoPlayAnimationDuration: Duration(milliseconds: 800),
-                  autoPlayCurve: Curves.easeInOutSine,
-                  enlargeCenterPage: true,
-                  scrollDirection: Axis.horizontal,
-                ))),
-        // Padding(
-        //   padding: const EdgeInsets.only(top: 5),
-        //   child: InteractiveViewer(
-        //     child: ListTile(
-        //       title: Text(
-        //         "",
-        //         style: GoogleFonts.oswald(fontSize: 40),
-        //       ),
-        //       leading: IconButton(
-        //         icon: Icon(
-        //           Icons.menu,
-        //           size: 40,
-        //         ),
-        //         onPressed: () {
-        //           // Scaffold.of(context).openDrawer();
-        //         },
-        //       ),
-        //     ),
-        //   ),
-        // ),
-        Padding(
-          padding: const EdgeInsets.only(top: 450, left: 30),
-          child: Card(
-            elevation: 10,
-            color: Colors.black,
-            child: Text(
-              "LifeStyle",
-              style: GoogleFonts.oswald(fontSize: 45, color: Colors.white),
-            ),
-          ),
-        ),
+  ListTile list (String text)
+    {
+    return  ListTile(
+        title: Card( child: Text('$text',textAlign: TextAlign.center, style: GoogleFonts.oswald(fontSize: 30,color: Colors.white),), color: Colors.black,),
+        onTap: () {
+          // Update the state of the app.
+          Navigator.pop(context);
+        }
+      );
+    }
 
-        Padding(
-          padding: const EdgeInsets.only(top: 535, left: 150),
-          child: CarouselSlider(
-            items: variables.item3,
-            options: CarouselOptions(
-              height: 60,
-              aspectRatio: 16 / 9,
-              viewportFraction: 0.911,
-              initialPage: 0,
-              enableInfiniteScroll: true,
-              reverse: false,
-              autoPlay: true,
-              autoPlayInterval: Duration(seconds: 3),
-              autoPlayAnimationDuration: Duration(milliseconds: 800),
-              autoPlayCurve: Curves.easeInOutSine,
-              enlargeCenterPage: true,
-              scrollDirection: Axis.horizontal,
-            ),
-          ),
-        ),
-
-        Padding(
-          padding: const EdgeInsets.only(left: 20, top: 625),
-          child: ListTile(
-              title: Text(
-                "Providing private detective services and private investigation services to businesses ",
-                style: GoogleFonts.inconsolata(color: Colors.black38),
-              )),
-        ),
-      ]),
-      SizedBox(
-        height: 40,
-      ),
-      Stack(children: <Widget>[
-        Padding(
-            padding: const EdgeInsets.all(0),
-            child: CarouselSlider(
-                items: Variables().item,
-                options: CarouselOptions(
-                  height: 500,
-                  aspectRatio: 16 / 9,
-                  viewportFraction: 0.911,
-                  initialPage: 0,
-                  enableInfiniteScroll: true,
-                  reverse: false,
-                  autoPlay: true,
-                  autoPlayInterval: Duration(seconds: 3),
-                  autoPlayAnimationDuration: Duration(milliseconds: 800),
-                  autoPlayCurve: Curves.easeInOutSine,
-                  enlargeCenterPage: true,
-                  scrollDirection: Axis.horizontal,
-                ))),
-        // Padding(
-        //   padding: const EdgeInsets.only(top: 5),
-        //   child: ListTile(
-        //     title: Text(
-        //       "",
-        //       style: GoogleFonts.oswald(fontSize: 40),
-        //     ),
-        //     leading: IconButton(
-        //       icon: Icon(
-        //         Icons.menu,
-        //         size: 40,
-        //       ),
-        //       onPressed: () {
-        //         // Scaffold.of(context).openDrawer();
-        //       },
-        //     ),
-        //   ),
-        // ),
-        Padding(
-          padding: const EdgeInsets.only(top: 450, left: 30),
-          child: Card(
-            elevation: 10,
-            color: Colors.black,
-            child: Text(
-              "Krala Murnau",
-              style: GoogleFonts.oswald(fontSize: 45, color: Colors.white),
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top: 540, left: 125),
-          child: Card(
-            shadowColor: Colors.black,
-            elevation: 0,
-            child: Text(
-              "Kaffee und Milch",
-              style: GoogleFonts.sedgwickAveDisplay(fontSize: 35),
-            ),
-          ),
-        ),
-
-        Padding(
-          padding: const EdgeInsets.only(left: 135, top: 580),
-          child: Container(
-              child: Text("Current Location: $city",
-                  style: GoogleFonts.inconsolata(
-                      fontSize: 15,
-                      textStyle: TextStyle(color: Colors.black45)))),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 20, top: 625),
-          child: ListTile(
-              title: Text(
-                "Providing private detective services and private investigation services to businesses ",
-                style: GoogleFonts.inconsolata(color: Colors.black38),
-              )),
-        ),
-      ]),
-    ];
 
     return SafeArea(
       child: Scaffold(
-
         drawer: new Drawer(
           child: ListView(
             // Important: Remove any padding from the ListView.
@@ -283,34 +257,10 @@ class _Mobile2 extends State<Mobile2> {
                   image: AssetImage('images/circle-cropped.png'),
                 ),
               ),
-              ListTile(
-                title: Card( child: Text('Life Stlyle',textAlign: TextAlign.center, style: GoogleFonts.oswald(fontSize: 30,color: Colors.white),), color: Colors.black,),
-                onTap: () {
-                  // Update the state of the app.
-                  Navigator.pop(context);
-                },
-              ),
-      ListTile(
-        title: Card( child: Text('Cafe',textAlign: TextAlign.center, style: GoogleFonts.oswald(fontSize: 30,color: Colors.white),), color: Colors.black,),
-        onTap: () {
-          // Update the state of the app.
-          Navigator.pop(context);
-        },
-      ),
-              ListTile(
-                title: Card( child: Text('Contact',textAlign: TextAlign.center, style: GoogleFonts.oswald(fontSize: 30,color: Colors.white),), color: Colors.black,),
-                onTap: () {
-                  // Update the state of the app.
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                title: Card( child: Text('Team',textAlign: TextAlign.center, style: GoogleFonts.oswald(fontSize: 30,color: Colors.white),), color: Colors.black,),
-                onTap: () {
-                  // Update the state of the app.
-                  Navigator.pop(context);
-                },
-              ),
+              list("LifeStyle"),
+              list("Cafe"),
+              list("Contact"),
+               list("Team"),
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Row(
@@ -323,32 +273,11 @@ class _Mobile2 extends State<Mobile2> {
           ),
         ),
         key: _scaffoldKey,
-        // appBar: AppBar(
-        //   backgroundColor: Colors.black,
-        //   leading: new IconButton(
-        //     color: Colors.white,
-        //     icon: new Icon(
-        //       Icons.menu,
-        //       size: 40,
-        //     ),
-        //     onPressed: () => _scaffoldKey.currentState.openDrawer(),
-        //   ),
-        // ),
-        // floatingActionButton: Padding(
-        //
-        //   padding: const EdgeInsets.only( bottom: 670),
-        //   child: new IconButton(
-        //     color: Colors.white,
-        //     icon: new Icon( Icons.menu, size: 40,),
-        //     onPressed: () => _scaffoldKey.currentState.openDrawer(),
-        //   ),
-        // ),
-
-        body:NestedScrollView(
-    headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-    return <Widget>[
-    SliverAppBar(
-    leading: new IconButton(
+        body: NestedScrollView(
+              headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+              return <Widget>[
+                SliverAppBar(
+                  leading: new IconButton(
                   padding: EdgeInsets.only(top: 0,left: 7),
                   color: Colors.black,
                   icon: new Icon(
@@ -361,14 +290,15 @@ class _Mobile2 extends State<Mobile2> {
                 expandedHeight: 500.0,
                 floating: false,
                 pinned: true,
-                flexibleSpace: FlexibleSpaceBar(
+                //responsive flexible spaceBar
+                  flexibleSpace: FlexibleSpaceBar(
                   centerTitle: true,
                   title: AnimatedDefaultTextStyle(
                     //Change Color of card and size of fonts in Vertical Drag( changeCard funtion to true)
-
                   style: changeCard? GoogleFonts.oswald(fontSize: 30, color: Colors.white)
                         : GoogleFonts.oswald(fontSize: 15, color: Colors.black),
                     duration: const Duration(milliseconds: 200),
+
                     child: Padding(
                       padding: const EdgeInsets.only(top: 0, right: 80),
                       child: Card(
@@ -376,7 +306,7 @@ class _Mobile2 extends State<Mobile2> {
                         color: changeCard? Colors.white:Colors.black,
                         child: Text(
                           "Krala Murnau",
-                          style: GoogleFonts.oswald(fontSize: 28, color: Colors.white),
+                          style: GoogleFonts.oswald(fontSize: categoryWidth/13, color: Colors.white),
                         ),
                       ),
                     ),
@@ -384,7 +314,7 @@ class _Mobile2 extends State<Mobile2> {
                   background: CarouselSlider(
                       items: Variables().item,
                       options: CarouselOptions(
-                        height: 400,
+                        height: categoryWidth,
                         aspectRatio: 16 / 9,
                         viewportFraction: 0.911,
                         initialPage: 0,
@@ -401,24 +331,216 @@ class _Mobile2 extends State<Mobile2> {
               )
             ];
           },
-          //RestOftheScrolls
+          //Rest Of the Scrolls
           body:
           GestureDetector(
            onDoubleTap: ()=> setState((){
              changeCard=true;
          }),
 
-            child: ListView.builder(
-              dragStartBehavior: DragStartBehavior.start,
-            controller: controller,
-            physics: BouncingScrollPhysics(),
-            addAutomaticKeepAlives: false,
-            cacheExtent: 100,
-            itemCount: itemData.length,
-            itemBuilder: (context, index) {
-              return itemData[index];
-            },
-        ),
+            child: ListView(
+              children: <Widget>[
+                Row(crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      //Responsive icon search
+                      Expanded(
+                        child: Icon(
+                          Icons.search,
+                          size: categoryWidth/10,
+                        ),
+                      ),
+                      //Responsive private investigator
+                      Align(
+                        alignment: Alignment.topRight,
+                        child: Column(
+                          children:<Widget> [
+                            Card(
+                              shadowColor: Colors.black,
+                              elevation: 0,
+                              child: Text(
+                                "Private Investigator",
+                                style: GoogleFonts.sedgwickAveDisplay(fontSize: categoryWidth/11),
+                              ),
+                            ),
+                            //Responsive city
+                            Container(
+                                child: Text("Current Location: $city",
+                                    style: GoogleFonts.inconsolata(
+                                        fontSize: categoryWidth/28,
+                                        textStyle: TextStyle(color: Colors.black45)))),
+                          ],
+                        ),
+                      ),
+                    ]),
+                //Responsive
+                SizedBox(
+                  height: size.width/15,
+                  width: 10,
+                ),
+                //Responsive description
+                ListTile(
+                    title: Text(
+                      "Providing private detective services and private investigation services to businesses ",
+                      style: GoogleFonts.inconsolata(color: Colors.black38,fontSize: categoryWidth/27),
+                    )),
+
+                //Hire Professional content
+                //Made responsive
+                Padding(
+                  padding: const EdgeInsets.only(right: 20, left: 20),
+                  child: Container(
+                    padding: EdgeInsets.only(left: 20, right: 20),
+                    height: categoryWidth/1.37,
+                    // width: 5,
+                    color: Colors.black,
+                    child: Column(
+                      children: <Widget>[
+                        Expanded(
+                            flex: 2,
+                            child: Center(
+                              child: Text(
+                                "Get your case " "Solved",
+                                textAlign: TextAlign.center ,
+                                style:
+                                GoogleFonts.oswald(fontSize: categoryWidth/9, color: Colors.white),
+                              ),
+                            )),
+                        Expanded( flex: 1,
+                            child: FlatButton(
+                              onPressed: null,
+                              child: ListTile(
+                                shape: RoundedRectangleBorder(),
+                                title: Card(
+                                  shape: RoundedRectangleBorder(),
+                                  child: Text(
+                                    "Hire Professional ",
+                                    textAlign: TextAlign.center,
+                                    style:
+                                    GoogleFonts.oswald(fontSize: categoryWidth/16, color: Colors.black, letterSpacing: 3),
+                                  ),
+                                ),
+                              ),
+                            )),
+                      ],
+                    ),
+                  ),
+                ),
+
+                //2nd stack
+                Stack( alignment: Alignment.bottomLeft,
+                    children: <Widget>[
+                      //Carausal
+                      CarouselSlider(
+                          items: Variables().item2,
+                          options: CarouselOptions(
+                            height: categoryWidth/0.8,
+                            //  width:
+                            aspectRatio: 16 / 9,
+                            viewportFraction: 0.911,
+                            initialPage: 0,
+                            enableInfiniteScroll: true,
+                            reverse: false,
+                            autoPlay: true,
+                            autoPlayInterval: Duration(seconds: 3),
+                            autoPlayAnimationDuration: Duration(milliseconds: 800),
+                            autoPlayCurve: Curves.easeInOutSine,
+                            enlargeCenterPage: true,
+                            scrollDirection: Axis.horizontal,
+                          )),
+// Responsive Lifestyle
+                      Card(
+                        elevation: 10,
+                        color: Colors.black,
+                        child: Text(
+                          "LifeStyle",
+                          style: GoogleFonts.oswald(fontSize: categoryWidth/9, color: Colors.white),
+                        ),
+                      ),
+                    ]),
+//Responsive City
+                Padding(
+                  padding: EdgeInsets.only(left: 120),
+                  child: CarouselSlider(
+                    items: itemText,
+                    options: CarouselOptions(
+                      height: 60,
+                      aspectRatio: 16 / 9,
+                      viewportFraction: 0.911,
+                      initialPage: 0,
+                      enableInfiniteScroll: true,
+                      reverse: false,
+                      autoPlay: true,
+                      autoPlayInterval: Duration(seconds: 3),
+                      autoPlayAnimationDuration: Duration(milliseconds: 800),
+                      autoPlayCurve: Curves.easeInOutSine,
+                      enlargeCenterPage: true,
+                      scrollDirection: Axis.horizontal,
+                    ),
+                  ),
+                ),
+//Responsive Text
+                ListTile(
+                    title: Text(
+                      "Providing private detective services and private investigation services to businesses ",
+                      style: GoogleFonts.inconsolata(color: Colors.black38,fontSize: categoryWidth/25),
+                    )),
+                // ]),
+                // SizedBox(
+                //   height: 40,
+                // ),
+                //3rd stack
+                Stack( alignment: Alignment.bottomLeft,
+                    children: <Widget>[
+                      //3rd Carousal Responsive
+                      CarouselSlider(
+                          items: Variables().item,
+                          options: CarouselOptions(
+                            height: categoryWidth/0.8,
+                            aspectRatio: 16 / 9,
+                            viewportFraction: 0.911,
+                            initialPage: 0,
+                            enableInfiniteScroll: true,
+                            reverse: false,
+                            autoPlay: true,
+                            autoPlayInterval: Duration(seconds: 3),
+                            autoPlayAnimationDuration: Duration(milliseconds: 800),
+                            autoPlayCurve: Curves.easeInOutSine,
+                            enlargeCenterPage: true,
+                            scrollDirection: Axis.horizontal,
+                          )),
+                      //3rd Krala Murnau text Responsie
+                      Card(
+                        elevation: 10,
+                        color: Colors.black,
+                        child: Text(
+                          "Krala Murnau",
+                          style: GoogleFonts.oswald(fontSize: categoryWidth/9, color: Colors.white),
+                        ),
+                      ),
+                    ]),
+
+                //Kaffee Und milch responsive
+                Align(
+                  alignment: Alignment.topRight,
+                  child: Card(
+                    shadowColor: Colors.black,
+                    elevation: 0,
+                    child: Text(
+                      "Kaffee und Milch",
+                      style: GoogleFonts.sedgwickAveDisplay(fontSize: categoryWidth/11),
+                    ),
+                  ),
+                ),
+                ListTile(
+                    title: Center(
+                      child: Text(
+                        "Providing private detective services and private investigation services to businesses ",
+                        style: GoogleFonts.inconsolata(color: Colors.black38),
+                      ),
+                    )),
+
+              ],
+            )
           ),
         ),
       ),
@@ -432,12 +554,21 @@ class _Mobile2 extends State<Mobile2> {
 
 
 
-
-
+//
+// ListView.builder(
+// dragStartBehavior: DragStartBehavior.start,
+// controller: controller,
+// physics: BouncingScrollPhysics(),
+// addAutomaticKeepAlives: false,
+// cacheExtent: 100,
+// itemCount: itemData.length,
+// itemBuilder: (context, index) {
+// return itemData[index];
+// },
+// ),
 // onVerticalDragStart: (DragStartDetails details){
 //   print(details);
 // },
-
 // onVerticalDragUpdate: (DragUpdateDetails details){ setState(() {
 //   changeCard=true;
 // }); print(details);},

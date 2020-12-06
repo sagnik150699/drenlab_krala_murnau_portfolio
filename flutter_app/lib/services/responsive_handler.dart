@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_app/ui/mobilelarge.dart';
 import 'package:flutter_app/ui/mobilesmall.dart';
 import 'package:flutter_app/ui/web.dart';
 
@@ -17,14 +16,11 @@ class _ServicesState extends State<Services> {
     // double _height = MediaQuery.of(context).size.height;
 
     return MaterialApp(
-      //theme: ThemeData.dark(),
+    //  theme: ThemeData.dark(),
       home: LayoutBuilder(
         builder: (context, constraints) {
-          if (constraints.maxWidth > 600) {
+          if (constraints.maxWidth > 800) {
             return Web();
-          }
-          if(constraints.maxHeight > 700 && constraints.maxHeight< 800){
-            return Mobile1();
           }
           else {
             return Mobile2();

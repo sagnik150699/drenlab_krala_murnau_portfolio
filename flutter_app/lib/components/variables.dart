@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 class Variables {
+
 //First Scroll
   List<Widget> item = [
     Image(
@@ -60,14 +61,15 @@ class Variables {
   ];
 
 
-  List<Widget> item3 = [ Card(
-    //color: Colors.black,
-    shadowColor: Colors.deepOrange,
-    elevation: 0,
-    child: Text(
-      "Munich, Germany",
-      style: GoogleFonts.sedgwickAveDisplay(fontSize: 35,textStyle: TextStyle(color: Colors.black)),
-    ),
-  ),
-  ];
+  // List<Widget> item3 = [ Card(
+  //   //color: Colors.black,
+  //   shadowColor: Colors.deepOrange,
+  //   elevation: 0,
+  //   child: Text(
+  //     "Munich, Germany",
+  //     style: GoogleFonts.sedgwickAveDisplay(fontSize: 35,textStyle: TextStyle(color: Colors.black)),
+  //   ),
+  // ),
+  // ];
 }
+
