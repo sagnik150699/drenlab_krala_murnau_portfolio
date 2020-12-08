@@ -60,16 +60,34 @@ class Variables {
     ),
   ];
 
+  List<Widget> item3 = [
+  Image(
+  height: 300,
+  image: AssetImage('images/backL.png'),
+  ),
+  Image(
+  height: 200,
+  image: AssetImage('images/heaterL.png'),
+  ),
+  Image(
+  height: 300,
+  image: AssetImage('images/poseL.png'),
+  )];
 
-  // List<Widget> item3 = [ Card(
-  //   //color: Colors.black,
-  //   shadowColor: Colors.deepOrange,
-  //   elevation: 0,
-  //   child: Text(
-  //     "Munich, Germany",
-  //     style: GoogleFonts.sedgwickAveDisplay(fontSize: 35,textStyle: TextStyle(color: Colors.black)),
-  //   ),
-  // ),
-  // ];
+
+
+//Custom Cards
+  Card cards (double size, color  , String str, cardColor ){
+    return Card(
+      color: cardColor,
+      elevation: 0,
+      child: Text(
+        str,
+        style: GoogleFonts.oswald(
+            fontSize: size,
+            color: color),
+      ),
+    );
+  }
 }
 
