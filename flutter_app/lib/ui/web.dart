@@ -4,12 +4,41 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_app/components/variables.dart';
 
-class Web extends StatelessWidget {
+class Web extends StatefulWidget {
+  @override
+  _WebState createState() => _WebState();
+}
+
+class _WebState extends State<Web> {
+  ScrollController controller = ScrollController();
+  bool closeTopContainer = false;
+  bool changeCard = true;
+
+  @override
+  void initState() {
+    super.initState();
+    controller.addListener(() {
+      //double value = controller.offset/119;
+      print(controller.offset);
+      if (controller.offset > 400) {
+
+        changeCard = false;
+      } else
+        changeCard = true;
+
+      print(changeCard);
+
+      // setState(() {
+      //  closeTopContainer = controller.offset > 50;
+      // });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final GlobalKey<ScaffoldState> _scaffoldKey =
         new GlobalKey<ScaffoldState>();
-    bool changeCard = false;
+
     var city = 'Berlin,Germany';
     final Size size = MediaQuery.of(context).size;
     final double categoryHeight = size.height;
@@ -67,6 +96,7 @@ class Web extends StatelessWidget {
           ),
         ),
         body: NestedScrollView(
+          controller: controller,
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return <Widget>[
               SliverAppBar(
@@ -89,31 +119,50 @@ class Web extends StatelessWidget {
                   title: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      variables.cards(categoryHeight / 14, Colors.white,
-                          "Krala Murnau", Colors.black),
+                      AnimatedDefaultTextStyle(
+                        style: changeCard
+                            ? GoogleFonts.oswald(fontSize: 5, color: Colors.white)
+                            : GoogleFonts.oswald(fontSize: 5, color: Colors.black),
+                        duration: const Duration(milliseconds: 50),
+                        child: changeCard? variables.cards(categoryHeight / 14, Colors.white, "Krala Murnau", Colors.black)
+                            :variables.cards(categoryHeight / 25, Colors.black, "Krala Murnau", Colors.white),
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           FlatButton(
                               onPressed: () {},
-                              child: variables.cards(
-                                categoryHeight / 35,
+                              child: changeCard?variables.cards(
+                                categoryHeight / 30,
                                 Colors.black,
                                 "LifeStyle",
                                 Colors.white,
+                              ):
+                              variables.cards(
+                                categoryHeight / 30,
+                                Colors.white,
+                                "LifeStyle",
+                                Colors.black,
                               )),
                           FlatButton(
                               onPressed: () {},
-                              child: variables.cards(categoryHeight / 35,
-                                  Colors.black, "Kaffee", Colors.white)),
+                              child: changeCard? variables.cards(categoryHeight / 30,
+                                  Colors.black, "Kaffee", Colors.white):
+                              variables.cards(categoryHeight / 30,
+                                  Colors.white, "Kaffee", Colors.black)),
                           FlatButton(
                               onPressed: () {},
-                              child: variables.cards(categoryHeight / 35,
-                                  Colors.black, "Contact", Colors.white)),
+                              child: changeCard? variables.cards(categoryHeight / 30,
+                                  Colors.black, "Contact", Colors.white):
+                              variables.cards(categoryHeight / 30,
+                                  Colors.white, "Contact", Colors.black),),
                           FlatButton(
                               onPressed: () {},
-                              child: variables.cards(categoryHeight / 35,
-                                  Colors.black, "Hire", Colors.white)),
+                              child: changeCard? variables.cards(categoryHeight / 30,
+                                  Colors.black, "Hire", Colors.white):
+                              variables.cards(categoryHeight / 30,
+                                  Colors.white, "Hire", Colors.black)
+                          ),
                         ],
                       )
                     ],
@@ -140,6 +189,7 @@ class Web extends StatelessWidget {
             ];
           },
           body: ListView(
+            //controller: controller,
             children: [
               Padding(
                 padding: const EdgeInsets.only(left: 80.0),
