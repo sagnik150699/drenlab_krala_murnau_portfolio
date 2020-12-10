@@ -13,6 +13,7 @@ class _WebState extends State<Web> {
   ScrollController controller = ScrollController();
   bool closeTopContainer = false;
   bool changeCard = true;
+  var city = 'Berlin,Germany';
 
   @override
   void initState() {
@@ -20,8 +21,8 @@ class _WebState extends State<Web> {
     controller.addListener(() {
       //double value = controller.offset/119;
       print(controller.offset);
-      if (controller.offset > 400) {
 
+      if (controller.offset > 400) {
         changeCard = false;
       } else
         changeCard = true;
@@ -46,6 +47,16 @@ class _WebState extends State<Web> {
     print("Width $categoryWidth");
     print("Height $categoryHeight");
     Variables variables = new Variables();
+    List<Widget> itemText = [
+      ListTile(
+        trailing: Text(
+          "Munich, Germany",
+          style: GoogleFonts.sedgwickAveDisplay(
+              fontSize: categoryHeight / 16,
+              textStyle: TextStyle(color: Colors.black)),
+        ),
+      ),
+    ];
 
     ListTile list(String text) {
       return ListTile(
@@ -121,48 +132,57 @@ class _WebState extends State<Web> {
                     children: [
                       AnimatedDefaultTextStyle(
                         style: changeCard
-                            ? GoogleFonts.oswald(fontSize: 5, color: Colors.white)
-                            : GoogleFonts.oswald(fontSize: 5, color: Colors.black),
+                            ? GoogleFonts.oswald(
+                                fontSize: 5, color: Colors.white)
+                            : GoogleFonts.oswald(
+                                fontSize: 5, color: Colors.black),
                         duration: const Duration(milliseconds: 50),
-                        child: changeCard? variables.cards(categoryHeight / 14, Colors.white, "Krala Murnau", Colors.black)
-                            :variables.cards(categoryHeight / 25, Colors.black, "Krala Murnau", Colors.white),
+                        child: changeCard
+                            ? variables.cards(categoryHeight / 14, Colors.white,
+                                "Krala Murnau", Colors.black)
+                            : variables.cards(categoryHeight / 25, Colors.black,
+                                "Krala Murnau", Colors.white),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           FlatButton(
                               onPressed: () {},
-                              child: changeCard?variables.cards(
-                                categoryHeight / 30,
-                                Colors.black,
-                                "LifeStyle",
-                                Colors.white,
-                              ):
-                              variables.cards(
-                                categoryHeight / 30,
-                                Colors.white,
-                                "LifeStyle",
-                                Colors.black,
-                              )),
+                              child: changeCard
+                                  ? variables.cards(
+                                      categoryHeight / 30,
+                                      Colors.black,
+                                      "LifeStyle",
+                                      Colors.white,
+                                    )
+                                  : variables.cards(
+                                      categoryHeight / 30,
+                                      Colors.white,
+                                      "LifeStyle",
+                                      Colors.black,
+                                    )),
                           FlatButton(
                               onPressed: () {},
-                              child: changeCard? variables.cards(categoryHeight / 30,
-                                  Colors.black, "Kaffee", Colors.white):
-                              variables.cards(categoryHeight / 30,
-                                  Colors.white, "Kaffee", Colors.black)),
+                              child: changeCard
+                                  ? variables.cards(categoryHeight / 30,
+                                      Colors.black, "Kaffee", Colors.white)
+                                  : variables.cards(categoryHeight / 30,
+                                      Colors.white, "Kaffee", Colors.black)),
                           FlatButton(
-                              onPressed: () {},
-                              child: changeCard? variables.cards(categoryHeight / 30,
-                                  Colors.black, "Contact", Colors.white):
-                              variables.cards(categoryHeight / 30,
-                                  Colors.white, "Contact", Colors.black),),
-                          FlatButton(
-                              onPressed: () {},
-                              child: changeCard? variables.cards(categoryHeight / 30,
-                                  Colors.black, "Hire", Colors.white):
-                              variables.cards(categoryHeight / 30,
-                                  Colors.white, "Hire", Colors.black)
+                            onPressed: () {},
+                            child: changeCard
+                                ? variables.cards(categoryHeight / 30,
+                                    Colors.black, "Contact", Colors.white)
+                                : variables.cards(categoryHeight / 30,
+                                    Colors.white, "Contact", Colors.black),
                           ),
+                          FlatButton(
+                              onPressed: () {},
+                              child: changeCard
+                                  ? variables.cards(categoryHeight / 30,
+                                      Colors.black, "Hire", Colors.white)
+                                  : variables.cards(categoryHeight / 30,
+                                      Colors.white, "Hire", Colors.black)),
                         ],
                       )
                     ],
@@ -279,12 +299,109 @@ class _WebState extends State<Web> {
                                   style: GoogleFonts.oswald(
                                       fontSize: categoryHeight / 16,
                                       color: Colors.black,
-                                      letterSpacing: 3),
+                                      letterSpacing: 5),
                                 ),
                               ),
                             ),
                           )),
                     ],
+                  ),
+                ),
+              ),
+              //2nd scroll
+              Stack(alignment: Alignment.bottomLeft, children: <Widget>[
+                //Carausal
+                CarouselSlider(
+                    items: Variables().item3,
+                    options: CarouselOptions(
+                      height: categoryHeight,
+                      //  width:
+                      aspectRatio: 16 / 9,
+                      viewportFraction: 0.500,
+                      initialPage: 0,
+                      enableInfiniteScroll: true,
+                      reverse: false,
+                      autoPlay: true,
+                      autoPlayInterval: Duration(seconds: 3),
+                      autoPlayAnimationDuration: Duration(milliseconds: 800),
+                      autoPlayCurve: Curves.easeInOutSine,
+                      enlargeCenterPage: true,
+                      scrollDirection: Axis.horizontal,
+                    )),
+// Responsive Lifestyle
+
+                variables.cards(categoryHeight / 10, Colors.white, "LifeStyle",
+                    Colors.black),
+              ]),
+//Responsive City
+              CarouselSlider(
+                items: itemText,
+                options: CarouselOptions(
+                  height: 90,
+                  aspectRatio: 16 / 9,
+                  viewportFraction: 1,
+                  initialPage: 0,
+                  enableInfiniteScroll: true,
+                  reverse: false,
+                  autoPlay: true,
+                  autoPlayInterval: Duration(seconds: 3),
+                  autoPlayAnimationDuration: Duration(milliseconds: 800),
+                  autoPlayCurve: Curves.easeInOutSine,
+                  enlargeCenterPage: true,
+                  scrollDirection: Axis.horizontal,
+                ),
+              ),
+//Responsive Text
+              ListTile(
+                  title: Text(
+                "The greatest glory in living lies not in never falling, but in rising every time we fall. -Nelson Mandela",
+                style: GoogleFonts.inconsolata(
+                    color: Colors.black38, fontSize: categoryHeight / 27),
+              )),
+
+              //3rd Scroll
+
+              Stack(alignment: Alignment.bottomLeft, children: <Widget>[
+                //3rd Carousal Responsive
+                CarouselSlider(
+                    items: Variables().item3,
+                    options: CarouselOptions(
+                      height: categoryHeight,
+                      aspectRatio: 16 / 9,
+                      viewportFraction: 0.500,
+                      initialPage: 0,
+                      enableInfiniteScroll: true,
+                      reverse: false,
+                      autoPlay: true,
+                      autoPlayInterval: Duration(seconds: 3),
+                      autoPlayAnimationDuration: Duration(milliseconds: 800),
+                      autoPlayCurve: Curves.easeInOutSine,
+                      enlargeCenterPage: true,
+                      scrollDirection: Axis.horizontal,
+                    )),
+                //3rd Krala Murnau text Responsie
+                variables.cards(categoryHeight / 10, Colors.white,
+                    "Caffè con Krala ", Colors.black),
+              ]),
+
+              //Kaffee Und milch responsive
+              Align(
+                alignment: Alignment.topRight,
+                child: Card(
+                  shadowColor: Colors.black,
+                  elevation: 0,
+                  child: Text(
+                    "Kaffee und Milch",
+                    style: GoogleFonts.sedgwickAveDisplay(
+                        fontSize: categoryHeight / 14),
+                  ),
+                ),
+              ),
+              ListTile(
+                title: Center(
+                  child: Text(
+                    "Providing private detective services and private investigation services to businesses ",
+                    style: GoogleFonts.inconsolata(color: Colors.black38),
                   ),
                 ),
               ),

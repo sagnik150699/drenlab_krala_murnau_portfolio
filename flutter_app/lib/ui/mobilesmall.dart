@@ -20,12 +20,10 @@ class _Mobile2 extends State<Mobile2> {
     controller.addListener(() {
       //double value = controller.offset/119;
       print(controller.offset);
-      if(controller.offset > 400)
-      {
-        changeCard=false;
-      }
-      else
-        changeCard=true;
+      if (controller.offset > 400) {
+        changeCard = false;
+      } else
+        changeCard = true;
 
       print(changeCard);
 
@@ -35,10 +33,6 @@ class _Mobile2 extends State<Mobile2> {
     });
   }
 
-
-
-
-
   var city = 'Berlin,Germany';
   Variables variables = new Variables();
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
@@ -47,7 +41,7 @@ class _Mobile2 extends State<Mobile2> {
     final double categoryHeight = size.height;
     final double categoryWidth = size.width;
 
-   //bool changeCard = true;
+    //bool changeCard = true;
     print("Width $categoryWidth");
     print("Height $categoryHeight");
     List<Widget> itemText = [
@@ -60,7 +54,6 @@ class _Mobile2 extends State<Mobile2> {
         ),
       ),
     ];
-
 
     ListTile list(String text) {
       return ListTile(
@@ -77,7 +70,6 @@ class _Mobile2 extends State<Mobile2> {
             Navigator.pop(context);
           });
     }
-
 
     return SafeArea(
       child: Scaffold(
@@ -133,17 +125,24 @@ class _Mobile2 extends State<Mobile2> {
                 flexibleSpace: FlexibleSpaceBar(
                   centerTitle: false,
                   title: AnimatedDefaultTextStyle(
-                    //Change Color of card and size of fonts in Vertical Drag( changeCard funtion to true)
-                    style: changeCard
-                        ? GoogleFonts.oswald(fontSize: 30, color: Colors.white)
-                        : GoogleFonts.oswald(fontSize: 15, color: Colors.black),
-                    duration: const Duration(milliseconds: 50),
-
-                    child:  changeCard?Align( alignment: Alignment.bottomRight,
-                        child: variables.cards(categoryWidth/13, Colors.white, "Krala Murnau",Colors.black),)
-                        : Align( alignment: Alignment.center,
-                      child: variables.cards(categoryWidth/19, Colors.black, "Krala Murnau",Colors.white),)
-                  ),
+                      //Change Color of card and size of fonts in Vertical Drag( changeCard funtion to true)
+                      style: changeCard
+                          ? GoogleFonts.oswald(
+                              fontSize: 30, color: Colors.white)
+                          : GoogleFonts.oswald(
+                              fontSize: 15, color: Colors.black),
+                      duration: const Duration(milliseconds: 50),
+                      child: changeCard
+                          ? Align(
+                              alignment: Alignment.bottomRight,
+                              child: variables.cards(categoryWidth / 13,
+                                  Colors.white, "Krala Murnau", Colors.black),
+                            )
+                          : Align(
+                              alignment: Alignment.center,
+                              child: variables.cards(categoryWidth / 19,
+                                  Colors.black, "Krala Murnau", Colors.white),
+                            )),
                   background: CarouselSlider(
                       items: Variables().item,
                       options: CarouselOptions(
@@ -190,15 +189,14 @@ class _Mobile2 extends State<Mobile2> {
                               style: GoogleFonts.sedgwickAveDisplay(
                                   fontSize: categoryWidth / 11),
                             ),
-
                           ),
                           //Responsive city
                           Container(
                               child: Text("Current Location: $city",
                                   style: GoogleFonts.inconsolata(
                                       fontSize: categoryWidth / 28,
-                                      textStyle: TextStyle(
-                                          color: Colors.black45)))),
+                                      textStyle:
+                                          TextStyle(color: Colors.black45)))),
                         ],
                       ),
                     ),
@@ -277,15 +275,15 @@ class _Mobile2 extends State<Mobile2> {
                       reverse: false,
                       autoPlay: true,
                       autoPlayInterval: Duration(seconds: 3),
-                      autoPlayAnimationDuration:
-                          Duration(milliseconds: 800),
+                      autoPlayAnimationDuration: Duration(milliseconds: 800),
                       autoPlayCurve: Curves.easeInOutSine,
                       enlargeCenterPage: true,
                       scrollDirection: Axis.horizontal,
                     )),
 // Responsive Lifestyle
 
-              variables.cards(categoryWidth/9, Colors.white, "LifeStyle",Colors.black),
+                variables.cards(
+                    categoryWidth / 9, Colors.white, "LifeStyle", Colors.black),
               ]),
 //Responsive City
               Padding(
@@ -333,14 +331,14 @@ class _Mobile2 extends State<Mobile2> {
                       reverse: false,
                       autoPlay: true,
                       autoPlayInterval: Duration(seconds: 3),
-                      autoPlayAnimationDuration:
-                          Duration(milliseconds: 800),
+                      autoPlayAnimationDuration: Duration(milliseconds: 800),
                       autoPlayCurve: Curves.easeInOutSine,
                       enlargeCenterPage: true,
                       scrollDirection: Axis.horizontal,
                     )),
                 //3rd Krala Murnau text Responsie
-                variables.cards(categoryWidth/9, Colors.white, "Krala Murnau",Colors.black),
+                variables.cards(categoryWidth / 9, Colors.white, "Krala Murnau",
+                    Colors.black),
               ]),
 
               //Kaffee Und milch responsive
