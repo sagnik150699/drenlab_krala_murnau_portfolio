@@ -21,9 +21,15 @@ class _Mobile2 extends State<Mobile2> {
       //double value = controller.offset/119;
       print(controller.offset);
       if (controller.offset > 400) {
-        changeCard = false;
+        setState(() {
+          changeCard = false;
+        });
+
       } else
-        changeCard = true;
+        setState(() {
+          changeCard = true;
+        });
+
 
       print(changeCard);
 
@@ -49,7 +55,7 @@ class _Mobile2 extends State<Mobile2> {
         title: Text(
           "Munich, Germany",
           style: GoogleFonts.sedgwickAveDisplay(
-              fontSize: categoryWidth / 12,
+              fontSize: categoryWidth / 14,
               textStyle: TextStyle(color: Colors.black)),
         ),
       ),

@@ -29,9 +29,6 @@ class _WebState extends State<Web> {
 
       print(changeCard);
 
-      // setState(() {
-      //  closeTopContainer = controller.offset > 50;
-      // });
     });
   }
 
@@ -47,6 +44,9 @@ class _WebState extends State<Web> {
     print("Width $categoryWidth");
     print("Height $categoryHeight");
     Variables variables = new Variables();
+
+
+
     List<Widget> itemText = [
       ListTile(
         trailing: Text(
