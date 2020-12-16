@@ -51,8 +51,8 @@ class _Mobile2 extends State<Mobile2> {
     print("Width $categoryWidth");
     print("Height $categoryHeight");
     List<Widget> itemText = [
-      ListTile(
-        title: Text(
+      Container(
+        child: Text(
           "Munich, Germany",
           style: GoogleFonts.sedgwickAveDisplay(
               fontSize: categoryWidth / 14,
@@ -141,13 +141,17 @@ class _Mobile2 extends State<Mobile2> {
                       child: changeCard
                           ? Align(
                               alignment: Alignment.bottomRight,
-                              child: variables.cards(categoryWidth / 13,
-                                  Colors.white, "Krala Murnau", Colors.black),
+                              child: Container(
+                                child: variables.cards(categoryWidth / 13,
+                                    Colors.white, "Krala Murnau", Colors.black),
+                              ),
                             )
                           : Align(
                               alignment: Alignment.center,
-                              child: variables.cards(categoryWidth / 19,
-                                  Colors.black, "Krala Murnau", Colors.white),
+                              child: Container(
+                                child: variables.cards(categoryWidth / 19,
+                                    Colors.black, "Krala Murnau", Colors.white),
+                              ),
                             )),
                   background: CarouselSlider(
                       items: Variables().item,

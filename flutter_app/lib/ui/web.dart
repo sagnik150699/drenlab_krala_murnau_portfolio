@@ -23,6 +23,7 @@ class _WebState extends State<Web> {
       print(controller.offset);
 
       if (controller.offset > 400) {
+
         changeCard = false;
       } else
         changeCard = true;
