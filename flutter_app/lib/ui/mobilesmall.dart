@@ -129,30 +129,24 @@ class _Mobile2 extends State<Mobile2> {
                 pinned: true,
                 //responsive flexible spaceBar
                 flexibleSpace: FlexibleSpaceBar(
+                  titlePadding: EdgeInsets.only(bottom: 7),
                   centerTitle: false,
-                  title: AnimatedDefaultTextStyle(
-                      //Change Color of card and size of fonts in Vertical Drag( changeCard funtion to true)
-                      style: changeCard
-                          ? GoogleFonts.oswald(
-                              fontSize: 30, color: Colors.white)
-                          : GoogleFonts.oswald(
-                              fontSize: 15, color: Colors.black),
-                      duration: const Duration(milliseconds: 50),
-                      child: changeCard
-                          ? Align(
-                              alignment: Alignment.bottomRight,
-                              child: Container(
-                                child: variables.cards(categoryWidth / 13,
-                                    Colors.white, "Krala Murnau", Colors.black),
-                              ),
-                            )
-                          : Align(
-                              alignment: Alignment.center,
-                              child: Container(
-                                child: variables.cards(categoryWidth / 19,
-                                    Colors.black, "Krala Murnau", Colors.white),
-                              ),
-                            )),
+                  title:
+            //changeCard?
+                          Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Container(
+                            child: variables.cards(changeCard?categoryWidth / 13:categoryWidth/19,
+                                Colors.white, "Krala Murnau", Colors.black),
+                          ),
+                        ),
+                      // : Align(
+                      //     alignment: Alignment.bottomCenter,
+                      //     child: Container(
+                      //       child: variables.cards(categoryWidth / 19,
+                      //           Colors.white, "Krala Murnau", Colors.black),
+                      //     ),
+                      //   ),
                   background: CarouselSlider(
                       items: Variables().item,
                       options: CarouselOptions(
