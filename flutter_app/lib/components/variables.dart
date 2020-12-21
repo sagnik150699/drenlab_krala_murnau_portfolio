@@ -83,6 +83,7 @@ class Variables {
       elevation: 0,
       child: Text(
         str,
+        textAlign: TextAlign.center,
         style: GoogleFonts.oswald(
             fontSize: size,
             color: color),

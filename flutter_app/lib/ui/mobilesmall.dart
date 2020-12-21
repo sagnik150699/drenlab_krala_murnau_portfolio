@@ -134,8 +134,9 @@ class _Mobile2 extends State<Mobile2> {
                   title:
             //changeCard?
                           Align(
-                          alignment: Alignment.bottomCenter,
+                          alignment: changeCard?Alignment.bottomRight: Alignment.bottomCenter,
                           child: Container(
+                            width: categoryWidth/2.3,
                             child: variables.cards(changeCard?categoryWidth / 13:categoryWidth/19,
                                 Colors.white, "Krala Murnau", Colors.black),
                           ),
