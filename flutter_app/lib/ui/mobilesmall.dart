@@ -90,7 +90,11 @@ class _Mobile2 extends State<Mobile2> {
                   image: AssetImage('images/circle-cropped.png'),
                 ),
               ),
-              list("LifeStyle"),
+              FlatButton(child: list("LifeStyle blog",),
+              onPressed:(){
+
+              },
+              ),
               list("Cafe"),
               list("Contact"),
               list("Team"),
@@ -134,9 +138,11 @@ class _Mobile2 extends State<Mobile2> {
                   title:
             //changeCard?
                           Align(
-                          alignment: changeCard?Alignment.bottomRight: Alignment.bottomCenter,
+                          alignment:Alignment.bottomRight,
                           child: Container(
-                            width: categoryWidth/2.3,
+                            width: changeCard?
+                                categoryWidth/2.3:
+                                categoryWidth/3.2,
                             child: variables.cards(changeCard?categoryWidth / 13:categoryWidth/19,
                                 Colors.white, "Krala Murnau", Colors.black),
                           ),
@@ -287,8 +293,11 @@ class _Mobile2 extends State<Mobile2> {
                     )),
 // Responsive Lifestyle
 
-                variables.cards(
-                    categoryWidth / 9, Colors.white, "LifeStyle", Colors.black),
+                Container(
+                  width: categoryWidth/2.3,
+                  child: variables.cards(
+                      categoryWidth / 9, Colors.white, "LifeStyle", Colors.black),
+                ),
               ]),
 //Responsive City
               Padding(
@@ -342,8 +351,11 @@ class _Mobile2 extends State<Mobile2> {
                       scrollDirection: Axis.horizontal,
                     )),
                 //3rd Krala Murnau text Responsie
-                variables.cards(categoryWidth / 9, Colors.white, "Krala Murnau",
-                    Colors.black),
+                Container(
+                  width: categoryWidth/1.8,
+                  child: variables.cards(categoryWidth / 10, Colors.white, "Krala Murnau",
+                      Colors.black),
+                ),
               ]),
 
               //Kaffee Und milch responsive
