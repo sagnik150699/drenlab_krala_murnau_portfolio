@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
-import '../components/variables.dart';
+import '../components.dart';
 
 class Mobile extends StatefulWidget {
   @override
@@ -19,14 +19,14 @@ class _MobileState extends State<Mobile> {
   void initState() {
     super.initState();
     controller.addListener(() {
-      print(controller.offset);
+      logger.d(controller.offset);
 
       if (controller.offset > 400) {
         changeCard = false;
       } else
         changeCard = true;
 
-      print(changeCard);
+      logger.d(changeCard);
     });
   }
 
@@ -55,7 +55,7 @@ class _MobileState extends State<Mobile> {
 
     return MaterialApp(
       home: Scaffold(
-        drawer: new Drawer(
+        drawer:  Drawer(
           child: ListView(
             // Important: Remove any padding from the ListView.
             padding: EdgeInsets.zero,
@@ -122,7 +122,7 @@ class _MobileState extends State<Mobile> {
                     )
                         : Align(
                       alignment: Alignment.bottomCenter,
-                      child: Container(
+                         child: Container(
                         width: categoryWidth/3.2,
                         child: variables.cards(categoryWidth / 19,
                             Colors.white, "Krala Murnau", Colors.black),

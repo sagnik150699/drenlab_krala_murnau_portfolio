@@ -1,16 +1,14 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import '../components.dart';
 
-import '../components/variables.dart';
-
-class Mobile2 extends StatefulWidget {
+class Mobile extends StatefulWidget {
   @override
-  _Mobile2 createState() => new _Mobile2();
+  _Mobile createState() => new _Mobile();
 }
 
-class _Mobile2 extends State<Mobile2> {
+class _Mobile extends State<Mobile> {
   ScrollController controller = ScrollController();
   bool changeCard = true;
 
@@ -19,7 +17,7 @@ class _Mobile2 extends State<Mobile2> {
     super.initState();
     controller.addListener(() {
       //double value = controller.offset/119;
-      print(controller.offset);
+      logger.d(controller.offset);
       if (controller.offset > 400) {
         setState(() {
           changeCard = false;
@@ -31,7 +29,7 @@ class _Mobile2 extends State<Mobile2> {
         });
 
 
-      print(changeCard);
+      logger.d(changeCard);
 
       // setState(() {
       //  closeTopContainer = controller.offset > 50;
@@ -48,80 +46,25 @@ class _Mobile2 extends State<Mobile2> {
     final double categoryWidth = size.width;
 
     //bool changeCard = true;
-    print("Width $categoryWidth");
-    print("Height $categoryHeight");
-    List<Widget> itemText = [
-      Container(
-        child: Text(
-          "Munich, Germany",
-          style: GoogleFonts.sedgwickAveDisplay(
-              fontSize: categoryWidth / 14,
-              textStyle: TextStyle(color: Colors.black)),
-        ),
-      ),
-    ];
+    logger.d("Width $categoryWidth");
+    logger.d("Height $categoryHeight");
 
-    ListTile list(String text) {
-      return ListTile(
-          title: Card(
-            child: Text(
-              '$text',
-              textAlign: TextAlign.center,
-              style: GoogleFonts.oswald(fontSize: 30, color: Colors.white),
-            ),
-            color: Colors.black,
-          ),
-          onTap: () {
-            // Update the state of the app.
-            Navigator.pop(context);
-          });
-    }
+
+
 
     return SafeArea(
       child: Scaffold(
-        drawer: new Drawer(
-          child: ListView(
-            // Important: Remove any padding from the ListView.
-            padding: EdgeInsets.zero,
-            children: <Widget>[
-              DrawerHeader(
-                child: Image(
-                  height: 300,
-                  image: AssetImage('images/circle-cropped.png'),
-                ),
-              ),
-              TextButton(child: list("LifeStyle blog",),
-              onPressed:(){
-
-              },
-              ),
-              list("Cafe"),
-              list("Contact"),
-              list("Team"),
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    Icon(Icons.call),
-                    Icon(Icons.alternate_email_outlined),
-                    Icon(Icons.message_outlined)
-                  ],
-                ),
-              )
-            ],
-          ),
-        ),
+        drawer:  Drawers(),
         key: _scaffoldKey,
         body: NestedScrollView(
           controller: controller,
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return <Widget>[
               SliverAppBar(
-                leading: new IconButton(
+                leading:  IconButton(
                   padding: EdgeInsets.only(top: 0, left: 7),
                   color: Colors.black,
-                  icon: new Icon(
+                  icon:  Icon(
                     Icons.menu,
                     size: 40,
                   ),
@@ -275,7 +218,7 @@ class _Mobile2 extends State<Mobile2> {
               Stack(alignment: Alignment.bottomLeft, children: <Widget>[
                 //Carausal
                 CarouselSlider(
-                    items: Variables().item2,
+                    items: Variables().itemMobile,
                     options: CarouselOptions(
                       height: categoryWidth / 0.8,
                       //  width:
@@ -303,7 +246,7 @@ class _Mobile2 extends State<Mobile2> {
               Padding(
                 padding: EdgeInsets.only(left: 120),
                 child: CarouselSlider(
-                  items: itemText,
+                  items: CityNames(categoryHeight),
                   options: CarouselOptions(
                     height: 60,
                     aspectRatio: 16 / 9,
@@ -327,10 +270,7 @@ class _Mobile2 extends State<Mobile2> {
                 style: GoogleFonts.inconsolata(
                     color: Colors.black38, fontSize: categoryWidth / 25),
               )),
-              // ]),
-              // SizedBox(
-              //   height: 40,
-              // ),
+
               //3rd stack
               Stack(alignment: Alignment.bottomLeft, children: <Widget>[
                 //3rd Carousal Responsive
@@ -373,7 +313,7 @@ class _Mobile2 extends State<Mobile2> {
               ),
               ListTile(
                   title: Center(
-                child: Text(
+                   child: Text(
                   "Providing private detective services and private investigation services to businesses ",
                   style: GoogleFonts.inconsolata(color: Colors.black38),
                 ),
@@ -387,21 +327,3 @@ class _Mobile2 extends State<Mobile2> {
   }
 }
 
-//
-// ListView.builder(
-// dragStartBehavior: DragStartBehavior.start,
-// controller: controller,
-// physics: BouncingScrollPhysics(),
-// addAutomaticKeepAlives: false,
-// cacheExtent: 100,
-// itemCount: itemData.length,
-// itemBuilder: (context, index) {
-// return itemData[index];
-// },
-// ),
-// onVerticalDragStart: (DragStartDetails details){
-//   print(details);
-// },
-// onVerticalDragUpdate: (DragUpdateDetails details){ setState(() {
-//   changeCard=true;
-// }); print(details);},

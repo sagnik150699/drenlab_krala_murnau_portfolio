@@ -2,8 +2,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import '../components/variables.dart';
+import '../components.dart';
 
 class Web extends StatefulWidget {
   @override
@@ -21,7 +20,7 @@ class _WebState extends State<Web> {
     super.initState();
     controller.addListener(() {
       //double value = controller.offset/119;
-      print(controller.offset);
+      logger.d(controller.offset);
 
       if (controller.offset > 400) {
 
@@ -29,7 +28,7 @@ class _WebState extends State<Web> {
       } else
         changeCard = true;
 
-      print(changeCard);
+      logger.d(changeCard);
 
     });
   }
@@ -39,84 +38,31 @@ class _WebState extends State<Web> {
     final GlobalKey<ScaffoldState> _scaffoldKey =
         new GlobalKey<ScaffoldState>();
 
-    var city = 'Berlin,Germany';
+
     final Size size = MediaQuery.of(context).size;
     final double categoryHeight = size.height;
     final double categoryWidth = size.width;
-    print("Width $categoryWidth");
-    print("Height $categoryHeight");
+    logger.d("Width $categoryWidth");
+    logger.d("Height $categoryHeight");
     Variables variables = new Variables();
 
 
 
-    List<Widget> itemText = [
-      ListTile(
-        trailing: Text(
-          "Munich, Germany",
-          style: GoogleFonts.sedgwickAveDisplay(
-              fontSize: categoryHeight / 16,
-              textStyle: TextStyle(color: Colors.black)),
-        ),
-      ),
-    ];
 
-    ListTile list(String text) {
-      return ListTile(
-          title: Card(
-            child: Text(
-              '$text',
-              textAlign: TextAlign.center,
-              style: GoogleFonts.oswald(fontSize: 30, color: Colors.white),
-            ),
-            color: Colors.black,
-          ),
-          onTap: () {
-            // Update the state of the app.
-            Navigator.pop(context);
-          });
-    }
 
-    return MaterialApp(
-      home: Scaffold(
+
+    return  Scaffold(
         key: _scaffoldKey,
-        drawer: new Drawer(
-          child: ListView(
-            // Important: Remove any padding from the ListView.
-            padding: EdgeInsets.zero,
-            children: <Widget>[
-              DrawerHeader(
-                child: Image(
-                  height: 300,
-                  image: AssetImage('images/circle-cropped.png'),
-                ),
-              ),
-              list("LifeStyle"),
-              list("Cafe"),
-              list("Contact"),
-              list("Team"),
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    Icon(Icons.call),
-                    Icon(Icons.alternate_email_outlined),
-                    Icon(Icons.message_outlined)
-                  ],
-                ),
-              )
-            ],
-          ),
-        ),
+      drawer: const Drawers(),
         body: NestedScrollView(
           controller: controller,
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return <Widget>[
               SliverAppBar(
-                leading: new IconButton(
+                leading:  IconButton(
                   padding: EdgeInsets.only(top: 0, left: 7),
                   color: Colors.black,
-                  icon: new Icon(
+                  icon:  Icon(
                     Icons.menu,
                     size: 60,
                   ),
@@ -148,21 +94,19 @@ class _WebState extends State<Web> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
-                          TextButton(
-                              onPressed: () {},
-                              child: changeCard
-                                  ? variables.cards(
-                                      categoryHeight / 30,
-                                      Colors.black,
-                                      "LifeStyle",
-                                      Colors.white,
-                                    )
-                                  : variables.cards(
-                                      categoryHeight / 30,
-                                      Colors.white,
-                                      "LifeStyle",
-                                      Colors.black,
-                                    )),
+                          changeCard
+                              ? variables.cards(
+                                  categoryHeight / 30,
+                                  Colors.black,
+                                  "LifeStyle",
+                                  Colors.white,
+                                )
+                              : variables.cards(
+                                  categoryHeight / 30,
+                                  Colors.white,
+                                  "LifeStyle",
+                                  Colors.black,
+                                ),
                           TextButton(
                               onPressed: () {},
                               child: changeCard
@@ -190,7 +134,7 @@ class _WebState extends State<Web> {
                     ],
                   ),
                   background: CarouselSlider(
-                      items: Variables().item3,
+                      items: Variables().itemWeb,
                       options: CarouselOptions(
                         height: categoryWidth,
                         aspectRatio: 16 / 9,
@@ -211,7 +155,7 @@ class _WebState extends State<Web> {
             ];
           },
           body: ListView(
-            //controller: controller,
+
             children: [
               Padding(
                 padding: const EdgeInsets.only(left: 80.0),
@@ -310,11 +254,11 @@ class _WebState extends State<Web> {
                   ),
                 ),
               ),
-              //2nd scroll
+              //Second Section
               Stack(alignment: Alignment.bottomLeft, children: <Widget>[
                 //Carausal
                 CarouselSlider(
-                    items: Variables().item3,
+                    items: Variables().itemWeb,
                     options: CarouselOptions(
                       height: categoryHeight,
                       //  width:
@@ -337,7 +281,7 @@ class _WebState extends State<Web> {
               ]),
 //Responsive City
               CarouselSlider(
-                items: itemText,
+                items: CityNames(categoryHeight),
                 options: CarouselOptions(
                   height: 90,
                   aspectRatio: 16 / 9,
@@ -361,12 +305,12 @@ class _WebState extends State<Web> {
                     color: Colors.black38, fontSize: categoryHeight / 27),
               )),
 
-              //3rd Scroll
+              //Third Section
 
               Stack(alignment: Alignment.bottomLeft, children: <Widget>[
                 //3rd Carousal Responsive
                 CarouselSlider(
-                    items: Variables().item3,
+                    items: Variables().itemWeb,
                     options: CarouselOptions(
                       height: categoryHeight,
                       aspectRatio: 16 / 9,
@@ -410,15 +354,7 @@ class _WebState extends State<Web> {
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 }
 
-//Change Color of card and size of fonts in Vertical Drag( changeCard funtion to true)
-// style: changeCard
-//     ? GoogleFonts.oswald(
-//         fontSize: 30, color: Colors.white)
-//     : GoogleFonts.oswald(
-//         fontSize: 15, color: Colors.black),
-// duration: const Duration(milliseconds: 200),
