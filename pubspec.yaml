@@ -13,9 +13,9 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.2
-  google_fonts:
-  carousel_slider:
-  logger:
+  carousel_slider: ^5.1.2
+  google_fonts: ^8.0.2
+  logger: ^2.0.2+1
 
 dev_dependencies:
   flutter_test:
@@ -23,6 +23,9 @@ dev_dependencies:
 
 
   flutter_lints: ^2.0.0
+
+dependency_overrides:
+  win32: ^6.0.0
 
 
 flutter:
